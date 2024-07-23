@@ -20,7 +20,7 @@ public class ApplyBookServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        RequestDispatcher view = request.getRequestDispatcher("/views/member/book/applyBook.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("/views/member/user/mypageApplyBook.jsp");
         view.forward(request, response);
     }
 

@@ -115,10 +115,10 @@
 }
 /* 나의 정보 form */
 .section2{
-    width: 100%;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
+   width: 78.5%;
+   background-color: white;
+   display: flex;
+   flex-direction: column;
    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
    border-radius: 20px;
 }
@@ -127,7 +127,7 @@
     background-color: white;
     margin: 15px;
     margin-bottom: 5px;
-    width: 60vw;
+    width: 55vw;
     border: 1px solid #858585;
     border-radius: 10px;
 }
