@@ -23,34 +23,37 @@
 }
 .main_content {
     width: 75vw;
-    height: 680px;
+    height: 740px;
     margin: 5rem auto;
     background-color: rgb(247, 247, 247);
     display: flex;
     flex-direction: row;
 }
 /* 사이드바 */
-.section1{
+.section1 {
     width: 25%;
     margin-right: 2rem;
     height: 100%;
     background-color: white;
     font-family: 'BMHANNAPro';
-	box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
-	border-radius: 20px;
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    overflow: hidden;  
 }
+
 .menu {
     list-style-type: none;
     padding: 0;
-    height: 600px;
+    height: 680px;
     background-color: white;
+    border-radius: 20px; 
 }
 
 .menu-item {
     width: 100%;
     background-color: white;
     font-family: 'BMHANNAPro';
-    font-size: 1.5vw;
+    font-size: 1vw;
 }
 
 .menu-item a {
@@ -116,8 +119,8 @@
     background-color: white;
     display: flex;
     flex-direction: column;
-	box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
-	border-radius: 20px;
+   box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+   border-radius: 20px;
 }
 /* 나의 프로필 */
 .profileForm{
@@ -227,12 +230,13 @@
 	width : 100%;
     display: flex;
     background-color: white;
+    height : 360px;
 }
 /* 출석 */
 .attendForm{
     background-color: white;
     margin: 15px;
-    height: 360px;
+    height: 340px;
     width: 50%;
     border: 1px solid #858585;
     border-radius: 10px;
@@ -284,7 +288,7 @@
 .myRecForm{
     background-color: white;
     margin: 15px;
-    height: 360px;
+    height: 340px;
     width: 50%;
     border: 1px solid #858585;
     border-radius: 10px;
@@ -293,14 +297,13 @@
     font-size: 2vw;
     font-family: 'BMHANNAPro';
     font-weight: 500;
-    margin-bottom: 20px;
     margin-top: 30px;
     display: flex;
     justify-content: center;
 }
 .myRecDiv{
     background-color: white;
-    margin: 60px;
+    margin: 40px;
 }
 .myRecDiv > div{
     margin-left: 22px;

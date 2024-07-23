@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     <title>마이페이지 사이드바</title> 
 	<script src="../../../resources/javascript/mypageSidebar.js"></script>  
-	<style>
+<style>
 /* 한나체Pro */
 @font-face {
     font-family: 'BMHANNAPro';
@@ -20,34 +20,37 @@
 }
 .main_content {
     width: 75vw;
-    height: 680px;
+    height: 740px;
     margin: 5rem auto;
     background-color: rgb(247, 247, 247);
     display: flex;
     flex-direction: row;
 }
 /* 사이드바 */
-.section1{
+.section1 {
     width: 25%;
     margin-right: 2rem;
     height: 100%;
     background-color: white;
     font-family: 'BMHANNAPro';
-	box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
-	border-radius: 20px;
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    overflow: hidden;  
 }
+
 .menu {
     list-style-type: none;
     padding: 0;
-    height: 600px;
+    height: 680px;
     background-color: white;
+    border-radius: 20px; 
 }
 
 .menu-item {
     width: 100%;
     background-color: white;
     font-family: 'BMHANNAPro';
-    font-size: 1.5vw;
+    font-size: 1vw;
 }
 
 .menu-item a {
@@ -113,8 +116,8 @@
     background-color: white;
     display: flex;
     flex-direction: column;
-	box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
-	border-radius: 20px;
+   box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+   border-radius: 20px;
 }
 </style>
 <body>
