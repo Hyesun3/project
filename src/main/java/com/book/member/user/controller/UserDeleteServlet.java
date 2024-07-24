@@ -23,7 +23,7 @@ public class UserDeleteServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("/views/member/user/delete.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/views/member/user/accountDelete.jsp");
 		view.forward(request, response);
 	}
 

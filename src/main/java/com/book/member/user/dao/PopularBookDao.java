@@ -25,10 +25,10 @@ public class PopularBookDao {
 	    	stmt = conn.createStatement();	        
 	        String sql = "SELECT b.books_title AS titles, " +
 	        			 "b.books_img AS images FROM book b " +
-	                     "JOIN (SELECT book_no, COUNT(*) AS bCnt " +
-	                     "FROM booktext GROUP BY book_no " +
+	                     "JOIN (SELECT books_no, COUNT(*) AS bCnt " +
+	                     "FROM booktext GROUP BY books_no " +
 	                     "ORDER BY bCnt DESC LIMIT 2) " + 
-	                     "AS popularBook ON popularBook.book_no = b.books_no";
+	                     "AS popularBook ON popularBook.books_no = b.books_no";
 	        rs = stmt.executeQuery(sql);
 	        while (rs.next()) {
 	            Map<String, String> bookMap = new HashMap<>();

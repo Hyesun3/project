@@ -135,12 +135,13 @@
       
       /* 댓글 */
       
-      .container {
-         width: 900px;
+      .replyContainer {
+         width: 800px;
          margin: auto;
          overflow: hidden;
          padding: 20px;
          position: relative; 
+         border-top:solid 1px;
       }
       
       .replyDiv {
@@ -254,7 +255,7 @@
                         모집 인원<span class="details_content"><%= event.getEvent_quota() %> 명</span>
                     </div>
                     <div class="item">
-                        모집 기간<span class="details_content"><%= formatDateString2(event.getEv_start()) %> ~ <%= formatDateString2(event.getEv_end()) %></span>
+                        모집 기간<span class="details_content"><%= formatDateString(event.getEv_start()) %> ~ <%= formatDateString(event.getEv_end()) %></span>
                     </div>
                     <div class="item">
                         이벤트 진행일<span class="details_content3"><%= event.getEv_progress() %></span>
@@ -366,13 +367,13 @@
       </main>
        <% } %> 
 <!-- 댓글 컨테이너 -->
-   <section class="container">
-       <% Integer replyCnt = (Integer) request.getAttribute("erReplyCnt"); %>
+   <section class="replyContainer">
+       <% Integer replyCnt = (Integer) request.getAttribute("admReplyCnt"); %>
        <div id="replyCount">댓글 수 : <%= (replyCnt != null ? replyCnt : 0) %></div><br>
        
        <% 
        // 댓글 리스트 가져오기
-       List<Map<String, String>> erReplyList = (List<Map<String, String>>) request.getAttribute("erReplyList");
+       List<Map<String, String>> erReplyList = (List<Map<String, String>>) request.getAttribute("admReplyList");
        // 세션에서 사용자 정보 가져오기
        User evReuserNo = (User) session.getAttribute("user");
        int userNo = (evReuserNo != null) ? evReuserNo.getUser_no() : -1;  // 사용자 번호를 가져오되, 세션이 없으면 -1로 설정
@@ -407,89 +408,19 @@
            </div>
            <!-- 댓글 내용 -->
            <div id="replyContent_<%= erReplyNo %>" class="replyContent"><%= erReply %></div>
-           <!-- 수정버튼 눌렀을 때 ( 등록폼 display none ) -->
-           <form id="updateForm_<%= erReplyNo %>" class="updateForm" action="/member/event/updateReply" method="post" style="display:none;">
-               <input type="hidden" name="event_no" value="<%= event.getEvent_no() %>">
-               <input type="hidden" name="eventType" value="<%= event.getEv_form() %>">
-               <input type="hidden" name="er_reply_no" value="<%= erReplyNo %>">
-               <input type="hidden" name="er_user_no" value="<%= userNo %>">
-               <input class="replyContent" id="replyUpdate_<%= erReplyNo %>" name="updateContent" type="text" value="<%= erReply %>">
-               <!-- 로그인한 유저와 댓글을 등록한 유저의 번호가 같거나 // 댓글이 삭제가 안되었을 경우 
-                    버튼이 보이도록 -->
-               <% if (userNo == replyUserNo && !ver.get("er_delete").equals("1")) { %>
-                   <div class="btn_gr">
-                       <input type="submit" id="update_<%= erReplyNo %>" class="replyBtns" value="등록">
-                       <input type="button" id="cancel_<%= erReplyNo %>" class="replyBtns" value="취소" onclick="cancelReplyForm('<%= erReplyNo %>')">
-                   </div>
-               <% } %>
-           </form>
-           <!-- 삭제 폼 -->
-           <form action="/member/event/deleteReply" method="post" style="display: inline;">
-               <input type="hidden" name="event_no" value="<%= event.getEvent_no() %>">
-               <input type="hidden" name="eventType" value="<%= event.getEv_form() %>">
-               <input type="hidden" name="er_reply_no" value="<%= erReplyNo %>">
-               <input type="hidden" name="er_user_no" value="<%= userNo %>">
-               <!-- 로그인한 유저와 댓글을 등록한 유저의 번호가 같거나 // 댓글이 삭제가 안되었을 경우 
-                    버튼이 보이도록 -->
-               <% if (userNo == replyUserNo && !ver.get("er_delete").equals("1")) { %>
-                   <div class="btn_gr">
-                       <input type="button" id="change_<%= erReplyNo %>" class="replyBtns" value="수정" onclick="changeReplyForm('<%= erReplyNo %>')">
-                       <input class="replyBtns" type="submit" id="delete_<%= erReplyNo %>" value="삭제">
-                   </div>
-               </form>
-               <% } %>
-               <!-- 부모의 번호가 0번이거나 // 삭제가 안되었을 경우
-                   답글하기가 보이도록 -->
-               <% if (erParentNo == 0 && !ver.get("er_delete").equals("1")) { %>
-                   <% if (isLoggedIn && isNotUserOne) { %> <!-- 로그인 상태이고 사용자 번호가 1이 아닌 경우만 보이도록 수정 -->
-                       <div class="btn_gr">
-                           <button type="button" id="reBtn" onclick="showReplyForm('<%= erReplyNo %>')">답글하기</button>
-                       </div>
-                   <% } %>
-               <% } %>
-               <!-- 답글하기를 눌렀을 때 나오는 답글 폼 -->
-               <div id="replyForm_<%= erReplyNo %>" class="reply-form" style="display:none;">
-                   <form action="/member/event/childReply" method="post">
-                       <input type="hidden" name="event_no" value="<%= event.getEvent_no() %>">
-                       <input type="hidden" name="eventType" value="<%= event.getEv_form() %>">
-                       <input type="hidden" name="er_parent" value="<%= erReplyNo %>">
-                       <input type="hidden" name="er_user_no" value="<%= userNo %>">
-                       <textarea class="write" name="er_content" placeholder="답글을 입력해주세요."></textarea>
-                       <div class="btn_gr">
-                           <input class="replyBtns" type="submit" value="등록">
-                           <input class="replyBtns" type="button" value="취소" onclick="hideReplyForm('<%= erReplyNo %>')">
-                       </div>
-                   </form>
-               </div>
-           </div>
            <% } %>
        <% } else { %> 
            <!-- 등록된 댓글이 없다면 -->
            <div class="replyContent">등록된 댓글이 없습니다.</div>
        <% } %>
        
-       <!-- 새 댓글 작성 폼 (부모 댓글) -->
-       <% if (isLoggedIn && isNotUserOne) { %> <!-- 로그인 상태이고 사용자 번호가 1이 아닌 경우만 보이도록 수정 -->
-           <form action="/member/event/addReply" method="post">
-               <div id="replyDiv">
-                   <input type="hidden" name="event_no" value="<%= event.getEvent_no() %>">
-                   <input type="hidden" name="eventType" value="<%= event.getEv_form() %>">
-                   <input type="hidden" name="er_user_no" value="<%= userNo %>">
-                   <textarea class="write" name="er_content" placeholder="댓글을 입력해주세요."></textarea>
-                   <div class="btn_gr">
-                       <input class="replyBtns" type="submit" value="등록">
-                       <input class="replyBtns" type="button" value="취소" onclick="clearReplyForm()">
-                   </div>
-               </div>
-           </form>
-       <% } %>
    </section>
  
     <%!
         SimpleDateFormat inputFormat1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
         SimpleDateFormat outputFormat1 = new SimpleDateFormat("yyyy-MM-dd a hh:mm");
 
-        String formatDateString2(String input) {
+        String formatDateString1(String input) {
             try {
                 Date date = inputFormat1.parse(input);
                 return outputFormat1.format(date);

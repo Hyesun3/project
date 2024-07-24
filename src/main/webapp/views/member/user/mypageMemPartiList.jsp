@@ -127,25 +127,31 @@
             <ul class="menu">
                 <li class="menu-item"><a href="/user/mypage">나의 정보</a></li>
                 <li class="menu-item">
-                    <a href="#">독후감 목록</a>
+                	<a href="#">독후감 목록</a>
                     <ul class="submenu">
                         <li><a href="/user/bookList">&nbsp;&nbsp;&nbsp;&nbsp; 작성된 독후감</a></li>
                         <li><a href="/user/saveTextList">&nbsp;&nbsp;&nbsp;&nbsp; 나만보기</a></li>
                     </ul>
                 </li>
                 <li class="menu-item"><a href="/user/event/parList">이벤트 참여 내역</a></li>
-                <li class="menu-item"><a href="/book/apply">도서 신청</a></li>
+	            <li class="menu-item">    
+	                <a href="#">도서 신청</a>
+	                <ul class="submenu">
+	                	<li><a href='/book/apply'>&nbsp;&nbsp;&nbsp;&nbsp;도서 신청</a></li>
+	                	<li><a href='/book/applyList'>&nbsp;&nbsp;&nbsp;&nbsp;도서 신청 목록</a></li>
+                	</ul>
+                </li>
                 <li class="menu-item">
                     <a href="#">문의 사항</a>
                     <ul class="submenu">
-                        <li><a href="/member/sg/create">&nbsp;&nbsp;&nbsp; 문의 사항 작성</a></li>
-                        <li><a href="/member/sg/list">&nbsp;&nbsp;&nbsp; 문의 사항 목록</a></li>
+                        <li><a href="/member/sg/create">&nbsp;&nbsp;&nbsp;&nbsp;문의 사항 작성</a></li>
+                        <li><a href="/member/sg/list">&nbsp;&nbsp;&nbsp;&nbsp;문의 사항 목록</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
         <div class="section2">
-			 <%@ include file="MemParticipateList.jsp" %>
+			 <%@ include file="../event/MemParticipateList.jsp" %>
         </div> 
     </div>
 </body> 

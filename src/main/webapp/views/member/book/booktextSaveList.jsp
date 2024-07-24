@@ -32,7 +32,7 @@
     .search input[type="submit"] {
         padding: 10px 20px;
         border: none;
-        background-color: #5cb85c;
+       background-color: rgb(224, 195, 163);
         color: white;
         border-radius: 5px;
         cursor: pointer;
@@ -59,6 +59,10 @@
         text-align: center;
         margin-top: 20px;
     }
+     .pagination {
+            display: inline-block;
+            justify-content: center;
+        }
     .pagination a {
         padding: 10px 15px;
         margin: 0 5px;
@@ -67,28 +71,44 @@
         text-decoration: none;
         border-radius: 5px;
     }
-    .pagination a.active {
-        background-color: #5cb85c;
-        color: white;
-        border-color: #5cb85c;
-    }
-    .pagination a:hover {
-        background-color: #4cae4c;
-        color: white;
+  .pagination a.active {
+            background-color: #A5A5A5;
+            color: white;
+            border: 1px solid #A5A5A5;
+        }
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+        }
+         .holeList {
+        font-family: 'LINESeedKR-Bd'; 
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 1rem 1rem;
+        background-color: white;
+        box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+      }
+        .center {
+        text-align: center;
+        margin-top: 20px;
     }
 </style>
 </head>
 <body>
 <%@ include file="../../include/header.jsp" %>
-<section>
-    <div id="section_wrap" class="container">
-        <div class="search">
-            <form action="/user/saveTextList" name="search_board_form" method="get" class="search_board_form">
-                <input type="text" name="bk_content" placeholder="검색하고자 하는 도서 이름을 검색하세요.">
-                <input type="submit" value="검색">
-            </form>
-        </div>
-        <div class="book_list">
+<section class="holeList">
+    <div class="search">
+        <form action="/user/saveTextList" name="search_board_form" method="get" class="search_board_form">
+            <input type="text" name="bk_content" placeholder="검색하고자 하는 도서 이름을 검색하세요.">
+            <input type="submit" value="검색">
+        </form>
+    </div>
+    <div class="book_list">
+        <%@ page import="com.book.member.book.vo.BookText, java.util.*" %>
+        <% 
+            List<Map<String, String>> list = (List<Map<String, String>>) request.getAttribute("resultList");
+            if (list != null && !list.isEmpty()) { 
+        %>
             <table class="book_table">
                 <thead>
                     <tr>
@@ -97,31 +117,24 @@
                         <th>저자</th>
                         <th>출판사</th>
                         <th>업로드(수정일)</th>
-
                     </tr>
                 </thead>
                 <tbody>
-                    <%@page import="com.book.member.book.vo.BookText, java.util.*" %>
-                    <% List<Map<String, String>> list = (List<Map<String, String>>) request.getAttribute("resultList");
-                       if (list != null) {
-                           for (Map<String, String> row : list) { %>
-                            <tr>
-                                <td> <a href="/user/saveEditCheck?save_no=<%= row.get("save_no") %>"><img src="<%= row.get("bk_img") %>" alt="책 이미지" width="100vw"></a></td>
-                                <td><%= row.get("bk_title") %></td>
-                                <td><%= row.get("bt_writer") %></td>
-                                <td><%= row.get("bk_publisher_name") %></td>
-                                <td><%= row.get("upload") %></td>
-
-                            </tr>
-                        <% }
-                       } else {%>
-                            <div class="no-results">검색한 결과가 없습니다.</div>
-                       <%}%>
+                    <% for (Map<String, String> row : list) { %>
+                        <tr>
+                            <td><a href="/user/saveEditCheck?save_no=<%= row.get("save_no") %>"><img src="<%= row.get("bk_img") %>" alt="책 이미지" width="100vw"></a></td>
+                            <td><%= row.get("bk_title") %></td>
+                            <td><%= row.get("bt_writer") %></td>
+                            <td><%= row.get("bk_publisher_name") %></td>
+                            <td><%= row.get("upload") %></td>
+                        </tr>
+                    <% } %>
                 </tbody>
             </table>
-        </div>
+        <% } else { %>
+            <div class="no-results">검색한 결과가 없습니다.</div>
+        <% } %>
     </div>
-</section>
 
 <% BookText paging = (BookText)request.getAttribute("paging");%>
 
@@ -143,5 +156,6 @@
         </div>
     </div>
 <% } %>
+</section>
 </body>
 </html>

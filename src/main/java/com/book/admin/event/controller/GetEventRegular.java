@@ -18,20 +18,35 @@ import org.quartz.JobExecutionException;
 import javax.mail.*;
 import javax.mail.internet.*;
 import java.util.Properties;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class GetEventRegular implements Job {
 
+   private String formatDateRange(String startDate, String endDate) {
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+        LocalDateTime start = LocalDateTime.parse(startDate, inputFormatter);
+        LocalDateTime end = LocalDateTime.parse(endDate, inputFormatter);
+
+        String formattedStart = start.format(outputFormatter);
+        String formattedEnd = end.format(outputFormatter);
+
+        return formattedStart + " ~ " + formattedEnd;
+    }
+   
     @Override
     public void execute(JobExecutionContext arg0) throws JobExecutionException {
         Connection conn = getConnection();
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
-
+ 
         try {
             String sql = "SELECT n.notification_no, n.user_no, n.event_no, n.is_sent, " +
-                    "e.event_title, e.event_start, e.event_quota, " +
-                    "u.user_email " +
+                    "e.event_title, e.event_start, e.event_end, e.event_quota, " +
+                    "u.user_email, u.user_name " +
                     "FROM event_notifications n " +
                     "JOIN events e ON n.event_no = e.event_no " +
                     "JOIN users u ON n.user_no = u.user_no " +
@@ -40,6 +55,7 @@ public class GetEventRegular implements Job {
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();
 
+            
             while (rs.next()) {
                 Map<String, Object> map = new HashMap<String, Object>();
                 map.put("notification_no", rs.getInt("notification_no"));
@@ -48,10 +64,22 @@ public class GetEventRegular implements Job {
                 map.put("is_sent", rs.getInt("is_sent"));
                 map.put("event_title", rs.getString("event_title"));
                 map.put("event_start", rs.getString("event_start"));
+                map.put("user_name", rs.getString("user_name"));
                 map.put("event_quota", rs.getInt("event_quota"));
                 map.put("user_email", rs.getString("user_email"));
+                map.put("event_end", rs.getString("event_end"));
 
-                String content = String.format("%s 이벤트의 선착순 등록이 1시간 후 시작됩니다!", rs.getString("event_title"));
+                String formattedDateRange = formatDateRange(rs.getString("event_start"), rs.getString("event_end"));
+
+                String content = String.format(
+                    "%s님, %s 이벤트의 선착순 등록이 1시간 후 시작됩니다!\n" +
+                    "이벤트 모집 기간 : %s\n" +
+                    "정원 : %d명",
+                    rs.getString("user_name"),
+                    rs.getString("event_title"),
+                    formattedDateRange,
+                    rs.getInt("event_quota")
+                );
                 map.put("content", content);
                 result.add(map);
             }
@@ -65,7 +93,7 @@ public class GetEventRegular implements Job {
 
         // 가져온 데이터가 현재 시간과 일치하는지 확인
         if (result.size() != 0) {
-			/* System.out.println("알림 : " + result.size()); */
+         /* System.out.println("알림 : " + result.size()); */
             for (int i = 0; i < result.size(); i++) {
                 String eventStartStr = (String) result.get(i).get("event_start");
                 LocalDateTime eventStart = LocalDateTime.parse(eventStartStr);

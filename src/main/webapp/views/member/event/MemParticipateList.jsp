@@ -9,7 +9,8 @@
 <head>
 <meta charset="UTF-8">
 <title>사용자 이벤트 참여 내역</title>
-<style>  
+<style>   
+
 .container {
     width: 100%;
     max-width: 1300px;  
@@ -20,8 +21,8 @@
         -ms-overflow-style: none;
     }
     ::-webkit-scrollbar {
-	  display: none;
-	}
+     display: none;
+   }
     
     .word h3 {
         font-family: 'LINESeedKR-Bd';
@@ -30,7 +31,7 @@
         font-size: 2vw;
     }
     #list_empty{
-    	font-size : 1.4vw;
+       font-size : 1.4vw;
     }
     .event_list_table {
         margin-top: 30px;
@@ -74,55 +75,55 @@
     }
     
     .search-container {
-	    display: flex;
-	    justify-content: space-between;
-	    align-items: center;
-	    margin-bottom: 20px;
-	}
-	
-	.search-form {
-	    display: flex;
-	    flex-grow: 1;
-	    margin-right: 10px;
-	}
-	
-	.search-input {
-	    flex-grow: 1;
-	    padding: 10px;
-	    font-size: 1.3vw;
-	    border: 1px solid #ccc;
-	    border-radius: 4px 0 0 4px;
-	}
-	
-	.search-button,
-	.all-button {
-	    padding: 10px 20px;
-	    font-size: 16px;
-	    color: #fff;
-	    background-color: #6c757d;
-	    border: none;
-	    cursor: pointer;
-	    transition: background-color 0.3s ease;
-	}
-	
-	.search-button {
-	    border-radius: 0 4px 4px 0;
-	    font-size : 1vw;
-	}
-	
-	.all-button {
-	    border-radius: 4px;
-	    font-size : 1vw;
-	    height : 45px;
-	}
-	
-	.search-button:hover,
-	.all-button:hover {
-	    background-color: #5a6268;
-	}
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       margin-bottom: 20px;
+   }
+   
+   .search-form {
+       display: flex;
+       flex-grow: 1;
+       margin-right: 10px;
+   }
+   
+   .search-input {
+       flex-grow: 1;
+       padding: 10px;
+       font-size: 1.3vw;
+       border: 1px solid #ccc;
+       border-radius: 4px 0 0 4px;
+   }
+   
+   .search-button,
+   .all-button {
+       padding: 10px 20px;
+       font-size: 16px;
+       color: #fff;
+       background-color: #6c757d;
+       border: none;
+       cursor: pointer;
+       transition: background-color 0.3s ease;
+   }
+   
+   .search-button {
+       border-radius: 0 4px 4px 0;
+       font-size : 1vw;
+   }
+   
+   .all-button {
+       border-radius: 4px;
+       font-size : 1vw;
+       height : 45px;
+   }
+   
+   .search-button:hover,
+   .all-button:hover {
+       background-color: #5a6268;
+   }
 
     .center {
-    	margin-top:50px;
+       margin-top:50px;
         text-align: center;
     }
     .pagination {
@@ -158,15 +159,15 @@
                     <h3><%= (user_nick != null) ? user_nick.getUser_nickname() : "" %>님의 이벤트 참여 내역</h3>
                 </div>
                 <br>
-				<div class="search-container">
-				    <form action="/user/event/parList" method="get" class="search-form">
-				        <input type="text" class="search-input" name="searchKeyword" placeholder="이벤트 제목 검색">
-				        <button type="submit" class="search-button">검색</button>
-				    </form>
-				    <form action="/user/event/parList" method="get" class="all-form">
-				        <button type="submit" class="all-button">전체</button>
-				    </form>
-				</div> 
+            <div class="search-container">
+                <form action="/user/event/parList" method="get" class="search-form">
+                    <input type="text" class="search-input" name="searchKeyword" placeholder="이벤트 제목 검색">
+                    <button type="submit" class="search-button">검색</button>
+                </form>
+                <form action="/user/event/parList" method="get" class="all-form">
+                    <button type="submit" class="all-button">전체</button>
+                </form>
+            </div> 
                 <div class="event_list">
                     <% if (request.getAttribute("userEvents") == null || ((List<Map<String, String>>) request.getAttribute("userEvents")).isEmpty()) { %>
                         <p id="list_empty">참여한 이벤트가 없습니다.</p>

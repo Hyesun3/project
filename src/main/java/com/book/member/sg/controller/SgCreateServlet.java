@@ -11,19 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/member/sg/create")
 public class SgCreateServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
        
     public SgCreateServlet() {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("/views/member/user/mypageSgCreate.jsp");
-		view.forward(request, response);
-	}
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      RequestDispatcher view = request.getRequestDispatcher("/views/member/user/mypageSgCreate.jsp");
+      view.forward(request, response);
+   }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      doGet(request, response);
+   }
 
 }

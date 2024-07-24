@@ -12,89 +12,6 @@
           crossorigin="anonymous"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
-        * {
-            background-color: rgb(247, 247, 247);
-            box-sizing: border-box;
-            margin: 0;
-            font-family: 'Ownglyph_meetme-Rg';
-        }
-        body{
-              background-color: rgb(247, 247, 247);
-        }
-
-
-        /* header */
-        ul, ol {
-            list-style: none;
-        }
-
-        #main_logo {
-            font-size: 30px;
-            color: rgb(146, 136, 107);
-            text-decoration: none;
-            font-family: "NanumSquare", sans-serif;
-            background-color: rgb(255, 255, 255);
-        }
-
-        .header_list {
-            text-decoration: none;
-            color: #000000;
-            font-size: 15px;
-            font-weight: 800;
-        }
-
-        .main_header > header > #header_nav {
-            background-color: rgb(255, 255, 255);
-            border-bottom: #b3b3b3c4 1px solid;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        nav {
-            width: 100%;
-            height: 90px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .header_list {
-            background-color: white;
-        }
-
-        #header_nav > a {
-            font-weight: 900;
-            padding: 0 30px;
-            background-color: rgb(255, 255, 255);
-        }
-
-        #header_nav > ul {
-            display: flex;
-            background-color: rgb(255, 255, 255);
-        }
-
-        #header_nav > ul li {
-            padding: 0 20px;
-            background-color: rgb(255, 255, 255);
-        }
-
-        #header_join {
-            color: rgb(0, 0, 0);
-            border: 1px solid #858585;
-            border-radius: 10px;
-            padding: 5px 15px;
-            background-color: rgb(255, 255, 255);
-        }
-
-        #section_wrap {
-            width: 80%;
-            margin: 20px auto;
-            background-color: white;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
 
         .center {
             text-align: center;
@@ -102,8 +19,9 @@
 
         .pagination {
             display: inline-block;
+            justify-content: center;
+              
         }
-
         .pagination a {
             color: black;
             float: left;
@@ -175,6 +93,7 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             background-color: white;
+            cursor : pointer;
         }
         .ele_bw >div > img{
         width:10vw;
@@ -228,8 +147,7 @@
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 4px;
-    width:5vw;
-    font-size:1vw;
+
 }
 .search input[type="submit"]:hover {
     background-color: gray;
@@ -240,7 +158,19 @@
                 width: calc(50% - 20px); /* 화면이 작을 때는 2개씩 정렬 */
             }
         }
-
+ .holeList {
+        font-family: 'LINESeedKR-Bd'; 
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 1rem 1rem;
+        background-color: white;
+        box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+      }
+        .center {
+        text-align: center;
+        margin-top: 20px;
+    }
     </style>
  <script>
         $(document).ready(function() {
@@ -265,7 +195,7 @@
 <% } %>
    <%@ include file="../../include/header.jsp" %>
 
-<section>
+<section class ="holeList">
 
     <div id="section_wrap" class="container">
         <div class="search">
@@ -290,19 +220,23 @@
                   if (list != null && !list.isEmpty()) {
                    for (Map<String, String> row : list) { %>
 
-                    <div class="ele_bw">
+                     <div class="ele_bw" onclick='move("/book/detail?bt_no=<%=row.get("bt_no")%>")'>
                         <div><img src="<%= row.get("bk_img") %>" alt="책 이미지"></div>
                         <div><%= row.get("bt_writer") %></div>
-                        <div><a href="/book/detail?bt_no=<%=row.get("bt_no")%>"><%= row.get("bk_title")%></a></div>
+                        <div><%= row.get("bk_title")%></a></div>
                     </div>
                 <% }
                  }else {%>
                  <div class="no-results">검색한 결과가 없습니다.</div>
               <% } %>
             </div>
+              <script>
+    			function move(url) {
+        			window.location.href = url;
+    			}
+				</script>
         </div>
     </div>
-</section>
 <% BookText paging = (BookText)request.getAttribute("paging");%>
 <% if(paging != null){ %>
     <div class="center">
@@ -322,5 +256,6 @@
         </div>
     </div>
 <% } %>
+</section>
 </body>
 </html>

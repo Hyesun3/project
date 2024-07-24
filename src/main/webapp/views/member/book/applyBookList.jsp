@@ -14,81 +14,14 @@
      <link rel="stylesheet"
      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
-        * {
-            background-color: rgb(247, 247, 247);
-            box-sizing: border-box;
-            margin: 0;
-            font-family: 'Ownglyph_meetme-Rg';
-        }
-        body {
-            background-color: rgb(247, 247, 247);
-        }
-        ul, ol {
-            list-style: none;
-        }
-        #main_logo {
-            font-size: 30px;
-            color: rgb(146, 136, 107);
-            text-decoration: none;
-            font-family: "NanumSquare", sans-serif;
-            background-color: rgb(255, 255, 255);
-        }
-        .header_list {
-            text-decoration: none;
-            color: #000000;
-            font-size: 15px;
-            font-weight: 800;
-        }
-        .main_header > header > #header_nav {
-            background-color: rgb(255, 255, 255);
-            border-bottom: #b3b3b3c4 1px solid;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-        }
-        nav {
-            width: 100%;
-            height: 90px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .header_list {
-            background-color: white;
-        }
-        #header_nav > a {
-            font-weight: 900;
-            padding: 0 30px;
-            background-color: rgb(255, 255, 255);
-        }
-        #header_nav > ul {
-            display: flex;
-            background-color: rgb(255, 255, 255);
-        }
-        #header_nav > ul li {
-            padding: 0 20px;
-            background-color: rgb(255, 255, 255);
-        }
-        #header_join {
-            color: rgb(0, 0, 0);
-            border: 1px solid #858585;
-            border-radius: 10px;
-            padding: 5px 15px;
-            background-color: rgb(255, 255, 255);
-        }
-        #section_wrap {
-            width: 80%;
-            margin: 20px auto;
-            background-color: white;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+
         .center {
             text-align: center;
         }
         .pagination {
             display: inline-block;
+            justify-content: center;
+            background-color : white;
         }
         .pagination a {
             color: black;
@@ -139,22 +72,17 @@
             align-items: left;
             margin-bottom: 20px;
             background-color:white;
-            width:100%;
+            width: 100%;
             gap:2vw;
         }
-        .search_board_form {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-                   background-color:white;
-        }
+       
         .search input[type="text"] {
             padding: 10px;
             width: 300px;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
-              width:55vw;
+            width: 100x;
         }
         .search select {
             padding: 10px;
@@ -171,7 +99,7 @@
             text-align: center; /* 수평 중앙 정렬 */
              justify-content: center;
             border-radius: 4px;
-            width: 6vw;
+          
         }
         .search input[type="submit"]:hover {
             background-color: gray;
@@ -205,6 +133,22 @@
             border : none;
             border-radius : 2px;
         }
+         .holeList {
+        font-family: 'LINESeedKR-Bd'; 
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 1rem 1rem;
+        background-color: white;
+        box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+      }
+        .center {
+        text-align: center;
+        margin-top: 20px;
+    }
+      .search_board_form > input {
+      	width:70%;
+      }
     </style>
 </head>
 
@@ -217,9 +161,8 @@
 <% } %>
    <%@ include file="../../include/header.jsp" %>
 <%@page import="com.book.admin.book.vo.ApplyBook, java.util.*" %>
-<section>
-
-    <div id="section_wrap" class="container">
+<section class ="holeList">
+     
         <div class="apply_info">
             <div>
                 <i class="fa-solid fa-book-open" ></i>
@@ -233,12 +176,14 @@
 
             <form class="search_board_form" action="/book/applyList" method="get">
                 <input type="text" name="apply_bk_title" placeholder="신청도서이름을 입력해주세요">
-                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </form>
-             <form class="search_board_form" action="/book/apply" method="get">
-             <button type="submit"><i class="fa-solid fa-plus"></i></button>
+               <input type="submit" value="검색">
+               
 
-             </form>
+            </form>
+  <!--            <form class="search_board_form" action="/book/apply" method="get">
+             <input type="submit" style="background-color : white;"><i class="fa-solid fa-plus">도서추가</i></button>
+
+             </form> -->
         </div>
         <table class="book_table">
             <thead>
@@ -286,7 +231,6 @@
             </tbody>
         </table>
     </div>
-</section>
 <% ApplyBook paging = (ApplyBook)request.getAttribute("paging");%>
 <% if(paging != null){ %>
     <div class="center">
@@ -306,5 +250,6 @@
         </div>
     </div>
 <% } %>
+</section>
 </body>
 </html>

@@ -42,7 +42,7 @@ public class EmailSender {
             message.setSubject(subject);
             message.setText(body);
             Transport.send(message);
-            System.out.println("이메일이 성공적으로 보내졌습니다.");
+
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.book.member.user.dao.AttendDao;
-import com.book.member.user.dao.Mypagedao;
+import com.book.member.user.dao.MypageDao;
 import com.book.member.user.vo.User;
 
 @WebServlet("/user/mypage")
@@ -26,10 +26,10 @@ public class mypageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User thisUser = (User)session.getAttribute("user");
-        // 유저 넘
+
         int userNo = thisUser.getUser_no();
 
-        Mypagedao mpd = new Mypagedao();
+        MypageDao mpd = new MypageDao();
         AttendDao atd = new AttendDao();
         // 이벤트 참여 수, 독후감 수, 문의사항 수, 출석일 수, 마지막 접속일
         int evCount = mpd.eventCount(userNo);
@@ -37,7 +37,7 @@ public class mypageServlet extends HttpServlet {
         int sgCount = mpd.sgCount(userNo);
         int atCount = atd.attendCount(userNo);
         String lastAt = atd.lastAttend(userNo);
-
+ 
         String year = "0";
         String month = "0";
         String date = "0";
@@ -51,6 +51,7 @@ public class mypageServlet extends HttpServlet {
             }
         }
 
+        System.out.println(lastAt);
         request.setAttribute("evCount", evCount);
         request.setAttribute("btCount", btCount);
         request.setAttribute("sgCount", sgCount);

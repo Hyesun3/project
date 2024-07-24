@@ -61,7 +61,7 @@ public class BookTextSaveListServlet extends HttpServlet {
             request.setAttribute("resultList", list);
             request.setAttribute("searchContent", content); // 검색어를 다시 JSP로 전달
             request.setAttribute("selectedRecommendation", recommendation); // 선택된 추천도를 다시 JSP로 전달
-
+            System.out.println(list);
             // JSP로 포워딩합니다.
             RequestDispatcher rd = request.getRequestDispatcher("/views/member/book/booktextSaveList.jsp");
             rd.forward(request, response);

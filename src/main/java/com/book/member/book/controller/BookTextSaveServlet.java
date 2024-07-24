@@ -70,7 +70,7 @@ public class BookTextSaveServlet extends HttpServlet {
             PrintWriter writer = response.getWriter();
             if (result > 0) {
                 // 성공 시 alert 창 띄우고 리디렉션
-                writer.println("<script>alert('임시저장되었습니다. 일주일뒤 자동삭제되는 점 양해부탁드립니다.'); location.href='/user/saveTextList?u_id="+userNo+"';</script>");
+                writer.println("<script>alert(`임시저장되었습니다. 일주일뒤 자동삭제되는 점 양해부탁드립니다.  임시저장시 추천도는 임의로 저장됩니다.`); location.href='/user/saveTextList?u_id="+userNo+"';</script>");
             } else {
                 writer.println("<script>alert('임시저장시 오류가 발생하였습니다.다시 시도해주세요.'); location.href='/user/bookList';</script>");
             }

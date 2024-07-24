@@ -64,7 +64,7 @@ public class BookTextDao {
                 sql += " AND c.recommendation_no = '"+recommendation+"'";
 
             }
-            sql += " LIMIT "+bt.getLimitPageNo()+", "+bt.getNumPerPage();
+            sql += " LIMIT "+bt.getLimitPageNo()+", "+8;
 
 
             pstmt = conn.prepareStatement(sql);
@@ -254,7 +254,7 @@ public class BookTextDao {
                 sql += " AND c.recommendation_no = '"+recommendation+"'";
 
             }
-            sql += " LIMIT "+bt.getLimitPageNo()+", "+bt.getNumPerPage();
+            sql += " LIMIT "+bt.getLimitPageNo()+", "+8;
 
 
             pstmt = conn.prepareStatement(sql);

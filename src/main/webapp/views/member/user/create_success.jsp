@@ -90,7 +90,7 @@
             </div>
         </header>
         <main>
-        <div style="font-size: 40px;">변경이 완료되었습니다.</div>
+        <div style="font-size: 40px;">회원가입이 완료되었습니다.</div>
         <div style="font-size: 40px;">로그인을 진행해 주세요.</div>
         </main>
         <footer>

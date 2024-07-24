@@ -20,7 +20,7 @@ public class UserEditServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("/views/member/user/edit.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/views/member/user/checkpw.jsp");
 		view.forward(request, response);
 	}
 

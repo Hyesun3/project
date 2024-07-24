@@ -1,6 +1,7 @@
 package com.book.member.user.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,7 +20,7 @@ public class UserFindPwEndServlet extends HttpServlet {
 
     // GET 요청을 처리하도록 doGet 메소드 추가
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/member/user/findpw.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/user/findpw.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -32,17 +33,28 @@ public class UserFindPwEndServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String sessionCode = (String) session.getAttribute("verificationCode");
         String inputCode = request.getParameter("email_number");
-
-        if (sessionCode != null && sessionCode.equals(inputCode)) {
-            User user = new UserDao().findpw(id,email);
-            
+        response.setContentType("text/html; charset=UTF-8");
+      PrintWriter writer = response.getWriter();
+      
+      if (sessionCode != null && sessionCode.equals(inputCode)) {
+            User user = new UserDao().findpw(id, email);
             if (user != null) {
-            	response.sendRedirect("/views/member/user/changepw.jsp");
+                if (user.getUser_active() == 0) {
+                    writer.println("<script>alert('탈퇴한 회원입니다.');location.href='/views/member/user/findpw.jsp';</script>");
+                    writer.flush();
+                    return;
+                }
+                session.setAttribute("user_id", user.getUser_id());
+                response.sendRedirect("/views/member/user/changepw.jsp");
             } else {
-            	response.sendRedirect("/views/member/user/findpw_fail.jsp");
+               writer.println("<script>alert('아이디 또는 이메일이 잘못 되었습니다.                                     아이디와 이메일을 정확히 입력해 주세요.');location.href='/views/member/user/findpw.jsp';</script>");
+                writer.flush();
+                return;
             }
         } else {
-            response.getWriter().write("인증 실패");
+           writer.println("<script>alert('아이디 또는 이메일이 잘못 되었습니다.                                     아이디와 이메일을 정확히 입력해 주세요.');location.href='/views/member/user/findpw.jsp';</script>");
+            writer.flush();
+            return;
         }
     }
 }

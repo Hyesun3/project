@@ -16,7 +16,7 @@ public class UserBookDao {
         Connection conn = getConnection();
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-
+        int end = b.getNumPerPage();
         try{
             String sql = "SELECT a.books_no AS 도서번호, a.books_title AS 도서이름, a.books_author AS 도서저자, a.books_publisher_name AS 출판사, a.books_img AS 도서이미지, b.book_category_name AS 카테고리 FROM book a \n" +
                     "JOIN book_category b ON a.books_category_no = b.books_category_no";
@@ -25,7 +25,7 @@ public class UserBookDao {
                 sql += " WHERE a.books_title LIKE CONCAT('%','"+content+"','%')";
             }
 
-            sql += " LIMIT "+b.getLimitPageNo()+", "+b.getNumPerPage();
+            sql += " LIMIT "+b.getLimitPageNo()+", "+8;
 
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();

@@ -12,11 +12,12 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
     
-    <!-- Bootstrap JS and dependencies -->
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     
+   <!-- Bootstrap JS and dependencies -->
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+       
     <style>
         @charset "UTF-8";
 
@@ -81,15 +82,17 @@
             box-sizing: border-box;
             margin: 0;
         }
+
         body {
             background-color: rgb(247, 247, 247);
         }
+
         .main_logo {
             font-size: 30px;
             color: rgb(224, 195, 163);
             text-decoration: none;
             font-family: 'JalnanGothic';
-            background-color: rgb(247, 247, 247);
+           
         }
 
         .main_logo:hover {
@@ -120,6 +123,7 @@
             padding: 2px 5px;
             font-size: 12px;
         }
+
         .modal {
             display: none;
             position: fixed;
@@ -160,6 +164,7 @@
             text-decoration-line: none;
             color: black;
         }
+
         .navBarCss {
             gap: 2vw;
         }
@@ -186,221 +191,240 @@
             border-radius: 4px; /* 모서리 둥글게 */
         }
         
-       	/* 알림 */
-		.notification-icon {
-		    position: relative;
-		    cursor: pointer;
-		}
-		
-		.notification-count {
-		    position: absolute;
-		    top: -5px;
-		    right: -5px;
-		    background-color: red;
-		    color: white;
-		    border-radius: 50%;
-		    padding: 2px 5px;
-		    font-size: 12px;
-		}
-		
-		.modal {
-		    display: none;
-		    position: fixed;
-		    z-index: 1;
-		    left: 0;
-		    top: 0;
-		    width: 100%;
-		    height: 100%;
-		    overflow: auto;
-		    background-color: rgba(0,0,0,0.6);
-		}
-		
-		.modal-content {
-		    background-color: #fefefe;
-		    margin: 15% auto;
-		    padding: 20px;
-		    border: 1px solid #888;
-		    width: 80%;
-		    max-width: 600px;
-		}
-		
-		.modal-content h2 {
-			text-align: center;
-			font-family: 'Freesentation-9Black';
-			font-size:30px;
-			margin-bottom: 30px;
-		}
-		
-		a {
-			text-decoration: none;
-			color : black;
-		}
-		
-		.notification-item {
-			background-color: rgba(250, 210, 125, 0.5);
-			padding : 10px 0px;
-			text-align: center;
-			font-size:18px;
-			font-weight:600;
-			border-radius: 15px;
-			margin-bottom: 15px;
-		}
-		
-		#noti_date {
-			margin-top:5px;
-			font-size:15px;
-			color: rgba(77, 77, 77);
-		}
-		.close {
-		    color: #aaa;
-		    float: right;
-		    font-size: 28px;
-		    font-weight: bold;
-		    cursor: pointer;
-		}
-		
-		.close:hover,
-		.close:focus {
-		    color: black;
-		    text-decoration: none;
-		    cursor: pointer;
-		}
-		
-		#notification-icon {
-			font-size:20px;
-		    color: #ffd700;
-		}
-		 
-		#no_events {
-			text-align: center;
-		}
+        /* 알림 */
+      .notification-icon {
+          position: relative;
+          cursor: pointer;
+      }
+      
+      .notification-count {
+          position: absolute;
+          top: -5px;
+          right: -5px;
+          background-color: red;
+          color: white;
+          border-radius: 50%;
+          padding: 2px 5px;
+          font-size: 12px;
+      }
+      
+      .modal {
+          display: none;
+          position: fixed;
+          z-index: 1;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          background-color: rgba(0,0,0,0.6);
+      }
+      
+      .modal-content {
+          background-color: #fefefe;
+          margin: 15% auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%;
+          max-width: 600px;
+      }
+      
+      .modal-content h2 {
+         text-align: center;
+         font-family: 'Freesentation-9Black';
+         font-size:30px;
+         margin-bottom: 30px;
+      }
+      
+      a {
+         text-decoration: none;
+         color : black;
+      }
+      
+      .notification-item {
+         background-color: rgba(250, 210, 125, 0.5);
+         padding : 10px 0px;
+         text-align: center;
+         font-size:18px;
+         font-weight:600;
+         border-radius: 15px;
+         margin-bottom: 15px;
+      }
+      
+      #noti_date {
+         margin-top:5px;
+         font-size:15px;
+         color: rgba(77, 77, 77);
+      }
+      .close {
+          color: #aaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+          cursor: pointer;
+      }
+      
+      .close:hover,
+      .close:focus {
+          color: black;
+          text-decoration: none;
+          cursor: pointer;
+      }
+      
+      #notification-icon {
+         font-size:20px;
+          color: #ffd700;
+      }
+       
+      #no_events {
+         text-align: center;
+      }
     </style>
 
 <section class="main_header">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a href="/" class="main_logo">Knock Book</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav navBarCss ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/user/bookList">도서</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/book/textList">독후감</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/user/event/list?status=ongoing">이벤트</a>
-                    </li>
-                    <%
-                       User user = (User) session.getAttribute("user");
-                       if (user == null) {
-                    %>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/user/login" id="header_join">로그인</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/user/create" id="header_join">회원가입</a>
-                    </li>
-                    <%
-                    } else if (user.getUser_no() == 1) {
-                    %>
-                    <li class="nav-item">
-                       <a class="nav-link" href="/event/list">이벤트</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/user/logout" id="header_logout">로그아웃</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin" id="header_adminPage">관리자 페이지</a>
-                    </li>
-                    <%
-                    } else {
-                    %>
-                        <li class="nav-item">
-                            <span class="navbar-text"><%= user.getUser_nickname() + "님 환영합니다." %></span>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/user/logout" id="header_join">로그아웃</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/user/mypage" id="header_join">마이페이지</a>
-                        </li>
-                         <li id="notification-icon" class="notification-icon"><i class="fas fa-bell"></i>
-	                </li>
-	
-	                <!-- 알림 모달 -->
-	                <div id="notification-modal" class="modal">
-	                    <div class="modal-content">
-	                        <span class="close">&times;</span>
-	                        <h2>알림 설정된 이벤트</h2>
-	                        <div id="notification-list"> 
-                        	    <%!
-							        SimpleDateFormat inputFormat2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-							        SimpleDateFormat outputFormat2 = new SimpleDateFormat("yyyy-MM-dd a hh:mm");
-							
-							        String formatDateString(String input) {
-							            try {
-							                Date date = inputFormat2.parse(input);
-							                return outputFormat2.format(date);
-							            } catch (Exception e) {
-							                e.printStackTrace();
-							                return "";
-							            }
-							        }
-							    %>
-	                            <%
-	                                MemEventDao notificationDAO = new MemEventDao();
-	                                List<Event> notifiedEvents = notificationDAO.getNotifiedEventsForUser(user.getUser_no());
-	                                if (notifiedEvents != null && !notifiedEvents.isEmpty()) {
-	                                    for (Event event : notifiedEvents) {
-	                            %>
-                                        <div class="notification-item">
-                                            <a href="<%= request.getContextPath() %>/user/event/detail?eventNo=<%= event.getEvent_no() %>&eventType=<%= event.getEv_form() %>">
-                                                <div id="noti_title"><%= event.getEv_title() %></div>
-                                                <div id="noti_date"><%= formatDateString(event.getEv_start()) %> ~ <%= formatDateString(event.getEv_end()) %></div>
-                                            </a>
-                                        </div>
-	                            <% 
-	                                    }
-	                                } else {
-	                            %>
-	                                    <p id="no_events">알림 설정된 이벤트가 없습니다.</p>
-	                            <% 
-	                                } 
-	                            %>
-	                        </div>
-	                    </div>
-	                </div>
-	            </ul>
-                    <%
-                        }
-                    %>
+                <%
+                   User user = (User) session.getAttribute("user");
+                   if (user == null) {
+                %>
+               <a href="/" class="main_logo">Knock Book</a>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                   <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarNav">
+                   <ul class="navbar-nav navBarCss ml-auto">
+                   <li class="nav-item">
+                       <a class="nav-link" href="/user/bookList">도서</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="/book/textList">독후감</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="/user/event/list?status=ongoing">이벤트</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="/user/login" id="header_join">로그인</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="/user/create" id="header_join">회원가입</a>
+                   </li>
+                   <%
+                   } else if (user.getUser_no() == 1) {
+                   %> 
+                   <a href="/views/admin/admin.jsp" class="main_logo">Knock Book</a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                      <ul class="navbar-nav navBarCss ml-auto">
+                   <li class="nav-item">
+                       <a class="nav-link" href="/views/admin/admin.jsp" id="header_adminPage">관리자 페이지</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="/user/logout" id="header_logout">로그아웃</a>
+                   </li>
+                   <%
+                   } else {
+                   %>
+                  <a href="/" class="main_logo">Knock Book</a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                      <ul class="navbar-nav navBarCss ml-auto">
+                      <li class="nav-item">
+                          <a class="nav-link" href="/user/bookList">도서</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/book/textList">독후감</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/user/event/list?status=ongoing">이벤트</a>
+                      </li>
+                   <ul class="navbar-nav navBarCss ml-auto">
+                       <li class="nav-item">
+                           <span class="navbar-text"><%= user.getUser_nickname() + "님 환영합니다." %></span>
+                       </li>
+                       <li class="nav-item">
+                           <a class="nav-link" href="/user/logout" id="header_join">로그아웃</a>
+                       </li>
+                       <li class="nav-item">
+                           <a class="nav-link" href="/user/mypage" id="header_join">마이페이지</a>
+                       </li>
+                        <li id="notification-icon" class="notification-icon"><i class="fas fa-bell"></i>
+                </li>
+
+                <!-- 알림 모달 -->
+                <div id="notification-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>알림 설정된 이벤트</h2>
+                        <div id="notification-list"> 
+                              <%!
+                          SimpleDateFormat inputFormat2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+                          SimpleDateFormat outputFormat2 = new SimpleDateFormat("yyyy-MM-dd a hh:mm");
+                  
+                          String formatDateString(String input) {
+                              try {
+                                  Date date = inputFormat2.parse(input);
+                                  return outputFormat2.format(date);
+                              } catch (Exception e) {
+                                  e.printStackTrace();
+                                  return "";
+                              }
+                          }
+                      %>
+                            <%
+                                MemEventDao notificationDAO = new MemEventDao();
+                                List<Event> notifiedEvents = notificationDAO.getNotifiedEventsForUser(user.getUser_no());
+                                if (notifiedEvents != null && !notifiedEvents.isEmpty()) {
+                                    for (Event event : notifiedEvents) {
+                            %>
+                                       <div class="notification-item">
+                                           <a href="<%= request.getContextPath() %>/user/event/detail?eventNo=<%= event.getEvent_no() %>&eventType=<%= event.getEv_form() %>">
+                                               <div id="noti_title"><%= event.getEv_title() %></div>
+                                               <div id="noti_date"><%= formatDateString(event.getEv_start()) %> ~ <%= formatDateString(event.getEv_end()) %></div>
+                                           </a>
+                                       </div>
+                            <% 
+                                    }
+                                } else {
+                            %>
+                                    <p id="no_events">알림 설정된 이벤트가 없습니다.</p>
+                            <% 
+                                } 
+                            %>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+                   <%
+                       }
+                   %>
 
             </div>
         </nav>
     </header>
 </section>
 <script>
-	$(document).ready(function() {
-	    var modal = $("#notification-modal");
-	    var icon = $("#notification-icon");
-	    var closeBtn = $(".close");
-	
-	    icon.click(function() {
-	        modal.css("display", "block");
-	    });
-	
-	    closeBtn.click(function() {
-	        modal.css("display", "none");
-	    });
-	
-	    $(window).click(function(event) {
-	        if (event.target == modal[0]) {
-	            modal.css("display", "none");
-	        }
-	    });
-	});
+$(document).ready(function() {
+    var modal = $("#notification-modal");
+    var icon = $("#notification-icon");
+    var closeBtn = $(".close");
+
+    icon.click(function() {
+        modal.css("display", "block");
+    });
+
+    closeBtn.click(function() {
+        modal.css("display", "none");
+    });
+
+    $(window).click(function(event) {
+        if (event.target == modal[0]) {
+            modal.css("display", "none");
+        }
+    });
+});
 </script>

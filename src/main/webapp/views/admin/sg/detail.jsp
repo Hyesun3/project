@@ -20,18 +20,16 @@ body {
 }
 
 .container {
-  height: 1000px;
-  width: 60%;
-  margin: auto;
-  overflow: hidden;
-  padding: 20px;
-  position: relative;
+    width: 60%;
+    margin: auto;
+    overflow: hidden;
+    padding: 80px;
+    position: relative;
 }
 
 .sg_post_detail {
   width: 100%;
-  height: 550px;
-  background: #f4f4f4;
+  background: #ffffff;
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 5px;
@@ -66,17 +64,16 @@ body {
 }
 
 .replyList {
-  width: 100%;
-  padding: 30px;
+    border-top: solid 1px;
+    margin-top: 20px;
 }
 
 .replyContent {
-	width: 95%;
-	height: 100px;
-	padding: 10px;
-	resize: none;
-	margin-top: 10px;
-	 border-radius: 4px;
+   width: 95%;
+   padding: 10px;
+   resize: none;
+   margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .reply{
@@ -85,7 +82,7 @@ body {
 }
 
 .addText{
-	text-align: center;
+   text-align: center;
 }
 
 .write{
@@ -105,7 +102,11 @@ body {
 }
 
 #replyDate{
-margin-left:30px
+margin-left:30px;
+}
+
+#nickname{
+margin-top:20px;
 }
 
 #btn_gr {
@@ -114,6 +115,21 @@ margin-left:30px
     justify-content: right;
     margin-right: 30px;
 }
+
+.imgContain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px; 
+}
+
+.imgContain img {
+  height: 100%;
+  width: 200px;
+  object-fit: cover;
+  margin: 0 5px;
+}
+
 .listBtn{
   width: 50px;
   height: 30px;
@@ -152,11 +168,12 @@ margin-left:30px
   background: #18283235;
 }
 #basicReply{
-	width:110px
+   width:130px
 }
 </style>
 </head>
 <body>
+<%@ include file="../../include/header.jsp" %>
     <div class="container">
         <div class="detail">
             <div class="sg_post_detail">
@@ -173,20 +190,22 @@ margin-left:30px
                 <p class="sg_post_info">
                     <span id="sg_post_date">작성일: <%= formatter.format(sg.getSg_mod_date()) %></span>
                 </p>
+                <div class="imgContain">
                 <% if (!imgSrc1.isEmpty()) { %>
-                    <img src="<%= imgSrc1 %>" alt="이미지 1" class="sg_image" width="200">
+                    <img src="<%= imgSrc1 %>" alt="이미지 1" class="sg_image">
                 <% } %>
                 <% if (!imgSrc2.isEmpty()) { %>
-                    <img src="<%= imgSrc2 %>" alt="이미지 2" class="sg_image" width="200">
+                    <img src="<%= imgSrc2 %>" alt="이미지 2" class="sg_image">
                 <% } %>
                 <% if (!imgSrc3.isEmpty()) { %>
-                    <img src="<%= imgSrc3 %>" alt="이미지 3" class="sg_image" width="200">
+                    <img src="<%= imgSrc3 %>" alt="이미지 3" class="sg_image">
                 <% } %>
+                </div>
                 <div id="sg_post_content"><%= sg.getSg_content() %></div>
             </div>
             <div class="btn_container">
                 <a class="listBtn" href="/admin/sg/list">목록</a>
-            </div>
+            </div><br>
         </div>
         <div class="replyList">
             <% SuggestionReply sr = (SuggestionReply) request.getAttribute("replyList");
@@ -200,18 +219,25 @@ margin-left:30px
                 <input type="hidden" name="sg_reply_no" value="<%= sgReplyNo %>">
                 <input type="hidden" name="sg_no" value="<%= sgNo %>">
                 <input class="replyContent" type="text" name="sgReply" value="<%= sgReply %>"></input>
+                <div id="btn_gr">
                 <input class="sgBtn" type="submit" value="등록">
                 <input class="sgBtn" type="reset" value="취소" onclick="chagneReplyForm()">
+                </div>
             </form>
             <div id="replyView">
-            	<span>관리자</span><span id="replyDate"><%=dtf.format(sr.getSg_reply_date()) %></span>
+            <div id="nickname">
+               <span>관리자</span>
+               <span id="replyDate"><%=dtf.format(sr.getSg_reply_date()) %></span>
+            </div>
                 <div class="replyContent"><%= sgReply %></div>
+                <div id="btn_gr">
                 <input class="sgBtn" type="button" value="수정" onclick="chagneReplyForm()">
                 <form action="/admin/sg/replyDelete" method="POST" style="display:inline">
                     <input type="hidden" name="sg_reply_no" value="<%= sgReplyNo %>">
                     <input type="hidden" name="sg_no" value="<%= sgNo %>">
                     <input class="sgBtn" type="submit" value="삭제">
                 </form>
+                </div>
             </div>
             <% } else { %>
             <div class="replyContent">등록된 댓글이 없습니다.</div>
@@ -223,7 +249,7 @@ margin-left:30px
                 <div class="addText">
                     <textarea class="write" name="reply" placeholder="관리자님! 답변을 달아주세요."></textarea>
                 </div>
-                <div id="btn_gr">
+                    <div id="btn_gr">
                     <select name="basicReply" id="basicReply" onchange="setBasicReply()">
                         <option value="">기본 답변 선택</option>
                         <% 
@@ -237,9 +263,9 @@ margin-left:30px
                         }
                         %>
                     </select>
-                    <input class="addBtn" type="submit" value="등록">
-                    <input class="reBtn" type="reset" value="취소">
-                </div>
+                    <input class="sgBtn" type="submit" value="등록">
+                    <input class="sgBtn" type="reset" value="취소">
+                    </div>
             </form>
         </div>
         <% } %>

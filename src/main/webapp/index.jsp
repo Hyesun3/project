@@ -1,4 +1,4 @@
-<%@ page import="com.book.member.user.dao.PopularBookDao"%> 
+<%-- <%@page import="com.book.member.user.dao.PopularBookDao"%> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
@@ -6,6 +6,7 @@
 <%@ page import="com.book.admin.event.dao.EventDao" %>
 <%@ page import="java.util.Map" %> 
 <%@ page import="java.util.Date"%>
+<%@ page import="com.book.member.user.dao.PopularBookDao" %>
 
 <!DOCTYPE html>
 <html>
@@ -13,7 +14,7 @@
 <meta charset="UTF-8">
 <title>6캔두잇</title> 
 <style>
-	@charset "UTF-8";
+@charset "UTF-8";
 	 
 	main {
 	    max-width: 1200px;
@@ -22,46 +23,57 @@
 	}
 	
 	.search_section {
-	    margin-top: 50px; 
-	} 
+	    margin-top: 50px;
+	    text-align: center;
+	}
 	
 	.search_title {
-	    font-size: 22px;
+	    font-size: 28px;
 	    font-weight: 600;
-	    text-align: center;
-	    color: #2c2c2c; 
-	    margin-bottom: 20px;
+	    color: #2c2c2c;
+	    margin-bottom: 30px;
 	    font-family: 'Freesentation-9Black';
+	}
+	
+	.search_board_form {
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    max-width: 1200px;
+	    margin: 0 auto;
 	}
 	
 	.search_input {
 	    width: 100%;
 	    padding: 15px 24px;
-	    background-color: transparent;
-	    transition: transform 250ms ease-in-out;
-	    font-size: 14px;
-	    line-height: 18px;
+	    font-size: 16px;
 	    color: #575756;
-	    background-color: transparent;
-	    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
-	    background-repeat: no-repeat;
-	    background-size: 18px 18px;
-	    background-position: 95% center;
-	    border-radius: 50px;
-	    border: 1px solid #575756;
-	    transition: all 250ms ease-in-out;
-	    backface-visibility: hidden;
-	    transform-style: preserve-3d;
+	    background-color: #f5f5f5;
+	    border: 2px solid #ddd;
+	    border-radius: 30px;
+	    transition: all 0.3s ease-in-out;
 	}
 	
-	.search_input:hover,
 	.search_input:focus {
-	    padding: 12px 0;
-	    outline: 0;
-	    border: 1px solid transparent;
-	    border-bottom: 1px solid #575756;
-	    border-radius: 0;
-	    background-position: 100% center;
+	    outline: none;
+	    border-color: #4a90e2;
+	    box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
+	}
+	
+	.search_submit {
+	    background-color: rgb(224, 195, 163);
+	    color: white;
+	    border: none;
+	    padding: 15px 30px;
+	    font-size: 16px;
+	    border-radius: 30px;
+	    margin-left: 10px;
+	    cursor: pointer;
+	    transition: background-color 0.3s ease-in-out;
+	}
+	
+	.search_submit:hover {
+	    background-color: rgb(189, 167, 143);
 	}
 	
 	.slide-image-container {
@@ -160,7 +172,7 @@
 	
 	.fade {
 	    animation-name: fade;
-	    animation-duration: 1.5s;
+	    animation-duration: 7s;
 	}
 	
 	@keyframes fade {
@@ -186,7 +198,7 @@
 	}
 	
 	.event_title {
-	    font-size: 2.5vw;
+	    font-size: 34px;
 	    font-weight: bold;
 	    margin-bottom: 10px;
 	    color: rgb(0, 0, 0);
@@ -203,20 +215,20 @@
 	.event_form_text {
 	    background-color: rgba(248, 224, 119, 0.65);
 	    font-family: 'LeferiPoint-BlackA';
-	    font-size: 1.3vw;
+	    font-size: 20px;
 	    padding: 7px 7px 0px 7px;
 	}
 	
 	.event-dday {
 	    font-weight: bold;
-	    font-size: 1.7vw;
+	    font-size: 20px;
 	    color: #edbb45;
 	    margin-left: 15px;  
 	} 
 	
 	.event_date {
 	    margin-top: 5%;
-	    font-size: 1.3vw;
+	    font-size: 20px;
 	    color: rgb(0, 0, 0);
 	    background-color: rgba(255, 255, 255, 0);
 	    font-family: 'LeferiPoint-BlackA';
@@ -226,7 +238,11 @@
 	    margin-top: 50px;  
 	}
 	
-	.recoBook .pRecoB {
+	.recoBook {
+    	margin-top: 50px;
+	}
+	
+	.pRecoB {
 	    font-size: 24px;
 	    font-weight: bold;
 	    text-align: center;
@@ -234,39 +250,65 @@
 	    font-family: 'LeferiPoint-BlackA';
 	}
 	
+	.book-container {
+	    display: flex;
+	    justify-content: center;
+	    flex-wrap: wrap;
+	    gap: 20px;
+	}
+	
 	.bDiv {
-	    margin: 20px 0;
 	    text-align: center;
+	    width: calc(50% - 10px);   
+	    max-width: 300px;
 	}
 	
 	.bTitle {
-	    font-size: 18px;
+	    font-size: 16px;
 	    margin-bottom: 10px;
 	    font-family: 'LeferiPoint-BlackA';
+	    height: 40px;   
+	    overflow: hidden;
+	    display: -webkit-box;
+	    -webkit-line-clamp: 2;
+	    -webkit-box-orient: vertical;
 	}
 	
 	.bImg {
-	    width: 150px;
+	    width: 100%;
 	    height: auto;
 	    border-radius: 10px;
+	    max-width: 150px;
+	}
+	
+	.mainPageAllArea {
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 1rem 3rem;
+        background-color: white;
+        box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
 	}
 </style>
 
 </head>
 <body>
     <%@ include file="views/include/header.jsp" %> 
-    <section>
+    <section class ="mainPageAllArea">
         <main>
 		    <!-- 검색 -->
             <section class="search_section">
-                <div class="search_container">
-                    <p class="search_title">
-                        Welcome to Knock Book!<br>Knock the door to endless stories.
-                    </p>
-                    <input class="search_input" type="text" placeholder="독후감을 작성할 도서를 검색해 보세요!">
-                </div>
-            </section>  
-            
+			    <div class="search_container">
+			        <h2 class="search_title">
+			            Welcome to Knock Book!<br>Knock the door to endless stories.
+			        </h2>
+			        <form action="/user/bookList" name="search_board_form" method="get" class="search_board_form">
+			            <input class="search_input" type="text" name="bk_content" placeholder="독후감을 작성할 도서를 검색해 보세요!">
+			            <input class="search_submit" type="submit" value="검색">
+			        </form>
+			    </div>
+			</section>
+          
             <!-- 이벤트 -->
             <section class="event-section">
 		        <div class="event_container">
@@ -290,7 +332,7 @@
 		                        long daysRemaining = (eventEndDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24);
 		                        String dday = (daysRemaining > 0) ? "D-" + daysRemaining : (daysRemaining == 0) ? "모집중" : "모집 기간 종료";
 		            %>  
-					        <div class="slide fade">
+					        <div class="slide">
 					            <a href="<%= detailUrl %>">
 					                <div class="slide-image-container"> 
 					                    <img src="<%= imageUrl %>" alt="Image <%= i + 1 %>" class="slide-image">
@@ -322,25 +364,22 @@
 		        </div>
 		    </section>
 		    
-		   <%--  <!-- 추천 도서 -->
-		    <div class="main">
-		 		<div class="main_cont">
-			 		<div class="recoBook">
-			 			<div class="pRecoB">추천 도서</div> 
-			 			<%
-			 			    List<Map<String, String>> pblist = new PopularBookDao().popularBookList();
-			 			%>	
-		
-			 			<% for(Map<String, String> pbMap : pblist) { %>
-			 			    <div class="bDiv">
-			 			        <p class="bTitle"><%= pbMap.get("titles") %></p>
-			 			        <img src="<%= pbMap.get("images") %>" 
-			 			        alt="<%= pbMap.get("titles") %>" class="bImg">
-			 			    </div>
-			 			<% } %>
-			 		</div> 
-		 		</div>
- 			</div> --%>
+		   <!-- 추천 도서 -->
+ 			<%
+ 			    List<Map<String, String>> pblist = new PopularBookDao().popularBookList();
+ 			%>	
+		    <div class="recoBook">
+			    <div class="pRecoB">추천 도서</div> 
+			    <div class="book-container">
+			        <% for(Map<String, String> pbMap : pblist) { %>
+			            <div class="bDiv">
+			                <p class="bTitle"><%= pbMap.get("titles") %></p>
+			                <img src="<%= pbMap.get("images") %>" 
+			                    alt="<%= pbMap.get("titles") %>" class="bImg">
+			            </div>
+			        <% } %>
+			    </div>
+			</div>
         </main>
     </section>
     

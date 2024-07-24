@@ -41,8 +41,9 @@
 
         .pagination {
             display: inline-block;
+            justify-content: center;
+              background-color: white;
         }
-
         .pagination a {
             color: black;
             float: left;
@@ -113,6 +114,7 @@
         }
 
         .ele_bw {
+         cursor: pointer;
             width: calc(25% - 20px); /* 한 줄에 4개씩 정렬을 위한 너비 설정 */
             padding: 10px;
             border: 1px solid #ddd;
@@ -171,8 +173,7 @@
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 4px;
-    width:5vw;
-    font-size:1vw;
+  
 }
 .search input[type="submit"]:hover {
     background-color: gray;
@@ -214,7 +215,7 @@
         <div class="search">
             <form action="/book/textList" name="search_board_form" method="get" class="search_board_form">
                 <input type="text" name="bw_content" value="<%= request.getAttribute("searchContent") %>" placeholder="검색하고자 하는 도서 이름을 검색하세요.">
-                <input type="submit" value="검색">
+               <input type="submit" value="검색">
                 <select name="recommendation" onchange="this.form.submit()">
                                 <option value="" <% if ("".equals(request.getParameter("recommendation"))) { %> selected <% } %>>추천도</option>
                                 <option value="5" <% if ("5".equals(request.getParameter("recommendation"))) { %> selected <% } %>>매우좋음</option>
@@ -233,10 +234,10 @@
                      if (list != null && !list.isEmpty()) {
                    for (Map<String, String> row : list) { %>
 
-                    <div class="ele_bw">
+                      <div class="ele_bw" onclick='move("/book/detail?bt_no=<%= row.get("bt_no") %>")'>
                         <div><img src="<%= row.get("bk_img") %>" alt="책 이미지"></div>
                         <div><%= row.get("bt_writer") %></div>
-                        <div><a href="/book/detail?bt_no=<%=row.get("bt_no")%>"><%= row.get("bk_title")%></a></div>
+                        <div><%= row.get("bk_title")%></div>
                     </div>
                 <% }
                 } else {%>
@@ -244,7 +245,11 @@
             <% } %>
             </div>
         </div>
-   
+  <script>
+    function move(url) {
+        window.location.href = url;
+    }
+</script>
 
 <% BookText paging = (BookText)request.getAttribute("paging");%>
 <% if(paging != null){ %>

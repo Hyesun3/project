@@ -279,7 +279,7 @@
 	width : 100%;
 }
 #lastAt{
-	margin-top : 20px;
+	margin-top : 10px;
 	font-size: 2vw;
 	background-color : white;
 	width : 100%;
@@ -340,19 +340,25 @@
             <ul class="menu">
                 <li class="menu-item"><a href="/user/mypage">나의 정보</a></li>
                 <li class="menu-item">
-                    <a href="#">독후감 목록</a>
+                	<a href="#">독후감 목록</a>
                     <ul class="submenu">
                         <li><a href="/user/bookList">&nbsp;&nbsp;&nbsp;&nbsp; 작성된 독후감</a></li>
                         <li><a href="/user/saveTextList">&nbsp;&nbsp;&nbsp;&nbsp; 나만보기</a></li>
                     </ul>
                 </li>
                 <li class="menu-item"><a href="/user/event/parList">이벤트 참여 내역</a></li>
-                <li class="menu-item"><a href="/book/apply">도서 신청</a></li>
+	            <li class="menu-item">    
+	                <a href="#">도서 신청</a>
+	                <ul class="submenu">
+	                	<li><a href='/book/apply'>&nbsp;&nbsp;&nbsp;&nbsp;도서 신청</a></li>
+	                	<li><a href='/book/applyList'>&nbsp;&nbsp;&nbsp;&nbsp;도서 신청 목록</a></li>
+                	</ul>
+                </li>
                 <li class="menu-item">
                     <a href="#">문의 사항</a>
                     <ul class="submenu">
-                        <li><a href="/member/sg/create">&nbsp;&nbsp;&nbsp; 문의 사항 작성</a></li>
-                        <li><a href="/member/sg/list">&nbsp;&nbsp;&nbsp; 문의 사항 목록</a></li>
+                        <li><a href="/member/sg/create">&nbsp;&nbsp;&nbsp;&nbsp;문의 사항 작성</a></li>
+                        <li><a href="/member/sg/list">&nbsp;&nbsp;&nbsp;&nbsp;문의 사항 목록</a></li>
                     </ul>
                 </li>
             </ul>
@@ -404,34 +410,33 @@
 			        	</div>
 			        	<div>
 			        		<div class="atClass">
-				        		 <p id="lastAt"></p>
-                                        <p id="lastAt">
-                                            <%
-                                                String yearStr = (String) request.getAttribute("year");
-                                                String monthStr = (String) request.getAttribute("month");
-                                                String dateStr = (String) request.getAttribute("date");
+                               <p id="lastAt">
+                                   <%
+                                       String yearStr = (String) request.getAttribute("year");
+                                       String monthStr = (String) request.getAttribute("month");
+                                       String dateStr = (String) request.getAttribute("date");
 
-                                                int year = 0;
-                                                int month = 0;
-                                                int date = 0;
+                                       int year = 0;
+                                       int month = 0;
+                                       int date = 0;
 
-                                                if (yearStr != null && !yearStr.isEmpty()) {
-                                                    year = Integer.parseInt(yearStr);
-                                                }
-                                                if (monthStr != null && !monthStr.isEmpty()) {
-                                                    month = Integer.parseInt(monthStr);
-                                                }
-                                                if (dateStr != null && !dateStr.isEmpty()) {
-                                                    date = Integer.parseInt(dateStr);
-                                                }
+                                       if (yearStr != null && !yearStr.isEmpty()) {
+                                           year = Integer.parseInt(yearStr);
+                                       }
+                                       if (monthStr != null && !monthStr.isEmpty()) {
+                                           month = Integer.parseInt(monthStr);
+                                       }
+                                       if (dateStr != null && !dateStr.isEmpty()) {
+                                           date = Integer.parseInt(dateStr);
+                                       }
 
-                                                if (year == 0 || month == 0 || date == 0) {
-                                                    out.print("오늘 첫 방문입니다.");
-                                                } else {
-                                                    out.print("마지막 출석날짜는"+"\n"+year + "년 " + month + "월 " + date + "일입니다.");
-                                                }
-                                                       %>
-                                        </p>
+                                       if (year == 0 || month == 0 || date == 0) {
+                                           out.print("오늘 첫 방문입니다.");
+                                       } else {
+                                           out.print("마지막 출석날짜는<br>"+year + "년 " + month + "월 " + date + "일입니다.");
+                                       }
+                                              %>
+                               </p>
 			        		</div>
 			        	</div>
 			        </div>

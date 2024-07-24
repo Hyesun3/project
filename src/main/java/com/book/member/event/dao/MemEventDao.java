@@ -17,7 +17,7 @@ import com.book.member.event.vo.MemEvent;
 
 public class MemEventDao {
  
-	// 알림 받기 설정한 이벤트 목록 
+   // 알림 받기 설정한 이벤트 목록 
     public List<Event> getNotifiedEventsForUser(int userNo) {
         List<Event> events = new ArrayList<>();
         Connection conn = getConnection();
@@ -53,7 +53,7 @@ public class MemEventDao {
         return events;
     } 
     
-	// 진행 중인 이벤트 목록 조회  
+   // 진행 중인 이벤트 목록 조회  
     public List<Map<String, String>> selectOngoingEvents(Event option) {
         List<Map<String, String>> list = new ArrayList<>();
         PreparedStatement pstmt = null;
@@ -142,7 +142,7 @@ public class MemEventDao {
     
     // 진행 중 이벤트 개수 조회 
     public int selectOngoingCount(Event option) {
-    	Connection conn = getConnection();
+       Connection conn = getConnection();
         int totalCount = 0;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -172,7 +172,7 @@ public class MemEventDao {
     
     // 진행 종료 이벤트 개수 조회 
     public int selectEndedCount(Event option) {
-    	Connection conn = getConnection();
+       Connection conn = getConnection();
         int totalCount = 0;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -202,7 +202,7 @@ public class MemEventDao {
      
     // 이벤트 총 개수 조회 메서드
     public int selectEventCount(Event option) {
-    	Connection conn = getConnection();
+       Connection conn = getConnection();
         int totalCount = 0;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -255,7 +255,7 @@ public class MemEventDao {
     
     // 이벤트 번호로 조회 메서드
     public Event selectEventByNo(int eventNo) {
-    	Connection conn = getConnection();
+       Connection conn = getConnection();
         Event event = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -300,7 +300,7 @@ public class MemEventDao {
     
     // 이벤트 참여 여부 확인
     public boolean checkRegistration(int eventNo, int userNo) {
-    	Connection conn = getConnection();
+       Connection conn = getConnection();
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         boolean isRegistered = false;
@@ -331,23 +331,23 @@ public class MemEventDao {
     
     // 이벤트 등록, 대기 상태 조회
     public int getParticipateState(int userNo, int eventNo) {
-    	Connection conn = getConnection();
-    	int state = -1;
-    	String query = "SELECT participate_state FROM participates WHERE user_no = ? AND event_no = ?";
-    	try (PreparedStatement ps = conn.prepareStatement(query)) {
-    		ps.setInt(1, userNo);
-    		ps.setInt(2, eventNo);
-    		
-    		try (ResultSet rs = ps.executeQuery()) {
-    			if (rs.next()) {
-    				state = rs.getInt("participate_state");
-    			}
-    			close(conn);
-    		}
-    	} catch (Exception e) {
-    		e.printStackTrace();
-    	}
-    	return state;
+       Connection conn = getConnection();
+       int state = -1;
+       String query = "SELECT participate_state FROM participates WHERE user_no = ? AND event_no = ?";
+       try (PreparedStatement ps = conn.prepareStatement(query)) {
+          ps.setInt(1, userNo);
+          ps.setInt(2, eventNo);
+          
+          try (ResultSet rs = ps.executeQuery()) {
+             if (rs.next()) {
+                state = rs.getInt("participate_state");
+             }
+             close(conn);
+          }
+       } catch (Exception e) {
+          e.printStackTrace();
+       }
+       return state;
     }
  
     // 이벤트 참여자 추가
@@ -363,8 +363,8 @@ public class MemEventDao {
             e.printStackTrace();
         }
     }  
-	
-	// 이벤트 참여자 삭제
+   
+   // 이벤트 참여자 삭제
     public void cancelRegistration(int eventNo, int userNo) {
         String sql = "DELETE FROM participates WHERE event_no = ? AND user_no = ?";
         try (Connection conn = getConnection();
@@ -373,9 +373,9 @@ public class MemEventDao {
             pstmt.setInt(2, userNo);
             pstmt.executeUpdate();
             
-	        // 취소 후 대기자 자동 등록 처리
-	        autoPromoteWaitingParticipant(eventNo);
-	        close(conn);
+           // 취소 후 대기자 자동 등록 처리
+           autoPromoteWaitingParticipant(eventNo);
+           close(conn);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -407,7 +407,7 @@ public class MemEventDao {
 
     // 이벤트 테이블의 event_registered 및 event_waiting 업데이트 
     private void updateEventCounts(int eventNo) {
-    	Connection conn = getConnection();
+       Connection conn = getConnection();
         String updateEventSql = "UPDATE events " +
                                 "SET event_registered = event_registered + 1, " +
                                 "event_waiting = event_waiting - 1 " +
@@ -455,12 +455,11 @@ public class MemEventDao {
     
     // 참여 이벤트 수 
     public int selectParEventCount(int userNo, String searchKeyword) {
-    	Connection conn = getConnection();
+       Connection conn = getConnection();
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         int result = 0;
-
-        // SQL 쿼리 문자열을 수정하여 events 테이블과 조인합니다.
+ 
         String sql = "SELECT COUNT(*) " +
                      "FROM participates p " +
                      "JOIN events e ON p.event_no = e.event_no " +
@@ -493,7 +492,7 @@ public class MemEventDao {
 
     // 참여 이벤트 조회 
     public List<Map<String, String>> getUserEventParticipations(int userNo, int startRow, int numPerPage, String searchKeyword) {
-    	Connection conn = getConnection();
+       Connection conn = getConnection();
         List<Map<String, String>> events = new ArrayList<>();
         PreparedStatement pstmt = null;
         ResultSet rs = null;

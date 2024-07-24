@@ -11,7 +11,8 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
           crossorigin="anonymous"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  
+       <link rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
 
 
@@ -22,6 +23,8 @@
 
         .pagination {
             display: inline-block;
+            justify-content: center;
+            background-color: white;
         }
 
         .pagination a {
@@ -156,8 +159,7 @@
             padding: 10px 20px;
             cursor: pointer;
             border-radius: 4px;
-            width: 5vw;
-            font-size: 1vw;
+       
         }
 
         .search input[type="submit"]:hover {
@@ -262,7 +264,14 @@
         .addBook {
             text-align : right;
             background-color:white;
+            padding: 10px;
+          
         }
+          .addBook > a {
+ 			padding: 10px;
+            border : 1px solid gray;
+            border-radius :20px;
+          }
         .holeList {
         font-family: 'LINESeedKR-Bd'; 
         max-width: 1000px;
@@ -276,14 +285,35 @@
         text-align: center;
         margin-top: 20px;
     }
-    
+    	  
+	.word h3 {
+         margin: 30px 0px;
+         text-align: center;
+         font-size: 30px;
+	}
+    .bk_img {
+        background-color: #f0f0f0;
+        height: 150px;
+        width: 100%;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .bk_img img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
     </style>
  
 </head>
 <body>
 <%@ include file="../../include/header.jsp" %>
 <section class ="holeList">
-    
+        <div class="word">
+	                <h3>도서 목록</h3>
+	            </div>
         <div class="search">
             <form action="/user/bookList" name="search_board_form" method="get" class="search_board_form">
                 <input type="text" name="bk_content" placeholder="검색하고자 하는 도서 이름을 검색하세요.">
@@ -293,7 +323,7 @@
           <% User user_bt=(User)session.getAttribute("user");
             if(user_bt != null){ %>
              <div class="addBook">
-               <a href="/book/apply">도서신청</a>
+               <a href="/book/apply"><i class="fa-solid fa-plus">도서추가</i></a>
              </div>
           <% } %>
 
@@ -311,7 +341,7 @@
 					    category: "<%= row.get("books_category") %>",
 					    id: "<%= row.get("books_no") %>"
 					})'>
-					    <div><img src="<%= row.get("books_img") %>" alt="책 이미지"></div>
+					    <div class="bk_img"><img src="<%= row.get("books_img") %>" alt="책 이미지"></div>
 					    <div><%= row.get("books_title") %></div>
 					</div>
                 <% }

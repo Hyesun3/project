@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.Properties;
 
 public class JDBCTemplate {
-	
+
 	public static Connection getConnection() {
 		Connection conn = null;
 		Properties prop = new Properties();
@@ -21,14 +21,8 @@ public class JDBCTemplate {
 			String url = prop.getProperty("url");
 			String user = prop.getProperty("username");
 			String pw = prop.getProperty("userpw");
+			
 			conn = DriverManager.getConnection(url, user, pw);
-			
-			
-//			Class.forName("com.mysql.cj.jdbc.Driver"); 
-//			String url = "jdbc:mysql://127.0.0.1:3306/semi_project";
-//			String user = "root";
-//			String userPw = "1234";
-//			conn = DriverManager.getConnection(url, user, userPw);			
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -38,7 +32,7 @@ public class JDBCTemplate {
 	
 	public static void commit(Connection conn) {
 		try {
-			if(conn != null && !conn.isClosed()) {
+			if(conn != null && conn.isClosed() == false) {
 				conn.commit();
 			}
 		}catch(SQLException e) {
@@ -66,7 +60,6 @@ public class JDBCTemplate {
 		}
 	}
 	
-	// Statement와 PreparedStatement 모두 사용 가능(다형성)
 	public static void close(Statement stmt) {
 		try {
 			if(stmt != null && stmt.isClosed() == false) {
@@ -86,5 +79,4 @@ public class JDBCTemplate {
 			e.printStackTrace();
 		}
 	}
-
 }

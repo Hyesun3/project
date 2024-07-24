@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.book.admin.sg.vo.Basic, java.util.*" %>
+<%@page import="com.book.admin.sg.vo.Basic, java.util.*" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>기본 답변 관리</title>
 
-</head>
-<body>
 <style>
 * {
   background-color: rgb(247, 247, 247);
@@ -19,8 +17,7 @@ html {
 }
 .admin_basic {
   width: 80%;
-  max-width: 1000px;
-  margin: 20px auto;
+  margin: 50px auto;
   border-collapse: collapse;
   border-top: 2px solid #000;
 }
@@ -86,6 +83,9 @@ html {
   display: none;
 }
 </style>
+</head>
+<body>
+<%@ include file="../../include/header.jsp" %>
 <div class="container">
 <table class="admin_basic" id="basicTable">
     <thead>
@@ -97,64 +97,64 @@ html {
     </thead>
     <tbody>
       <%List<Basic> list = (List<Basic>)request.getAttribute("basicList");
-		int pageSize = 10;
-		int nowPage = request.getParameter("nowPage") == null ? 1 : Integer.parseInt(request.getParameter("nowPage"));
-		int startNo = (nowPage - 1) * pageSize + 1;
+      int pageSize = 10;
+      int nowPage = request.getParameter("nowPage") == null ? 1 : Integer.parseInt(request.getParameter("nowPage"));
+      int startNo = (nowPage - 1) * pageSize + 1;
 
-		if(list != null && !list.isEmpty()) {
-    		for(int i = 0; i < list.size(); i++) {
-    		String basicContent = list.get(i).getBasic_content();
-    		int basicReplyNo = list.get(i).getBasic_no();
-    		%>
-    		
+      if(list != null && !list.isEmpty()) {
+          for(int i = 0; i < list.size(); i++) {
+          String basicContent = list.get(i).getBasic_content();
+          int basicReplyNo = list.get(i).getBasic_no();
+          %>
+          
         <tr>
-        	<td><%=startNo + i%></td>
-           	<td id="replyBasic_<%=basicReplyNo%>"><%=basicContent%></td>
-			<td>
-    		<form id="updateBasic_<%=basicReplyNo%>" action="/admin/sg/update" method="POST" class="hidden">
-    			<input type="hidden" name="basic_no" value="<%=basicReplyNo%>">
-        		<input type="text" class="replyContent" name="updateBasic" value="<%=basicContent%>" style="width:535px">
-        		<input type="submit" class="BasicBtns" value="등록">
-        		<input type="button" class="BasicBtns" value="취소" onclick="cancelEdit(<%=basicReplyNo%>)">
-    		</form>
-    		<input type="button" class="BasicBtns" id="change_<%=basicReplyNo%>" onclick="changeBasicForm(<%=basicReplyNo%>)" value="수정">
-    		<form id="deleteBasic_<%=basicReplyNo%>" action="/admin/sg/delete" method="POST" style="display:inline;">
-        		<input type="hidden" name="basic_no" value="<%=basicReplyNo%>">
-        		<input type="submit" id="delete_<%=basicReplyNo%>" class="BasicBtns" value="삭제" class="hidden">
-    		</form>
-			</td>
+           <td><%=startNo + i%></td>
+              <td id="replyBasic_<%=basicReplyNo%>"><%=basicContent%></td>
+         <td>
+          <form id="updateBasic_<%=basicReplyNo%>" action="/admin/sg/update" method="POST" class="hidden">
+             <input type="hidden" name="basic_no" value="<%=basicReplyNo%>">
+              <input type="text" class="replyContent" name="updateBasic" value="<%=basicContent%>" style="width:535px">
+              <input type="submit" class="BasicBtns" value="등록">
+              <input type="button" class="BasicBtns" value="취소" onclick="cancelEdit(<%=basicReplyNo%>)">
+          </form>
+          <input type="button" class="BasicBtns" id="change_<%=basicReplyNo%>" onclick="changeBasicForm(<%=basicReplyNo%>)" value="수정">
+          <form id="deleteBasic_<%=basicReplyNo%>" action="/admin/sg/delete" method="POST" style="display:inline;">
+              <input type="hidden" name="basic_no" value="<%=basicReplyNo%>">
+              <input type="submit" id="delete_<%=basicReplyNo%>" class="BasicBtns" value="삭제" class="hidden">
+          </form>
+         </td>
         </tr>
-		<%}
-			} else {%>
-    	<tr>
-        	<td colspan="3">관리자님 기본 답변을 입력해주세요 !</td>
-    	</tr>
-		<%}%>
+      <%}
+         } else {%>
+       <tr>
+           <td colspan="3">관리자님 기본 답변을 입력해주세요 !</td>
+       </tr>
+      <%}%>
     </tbody>
   </table>
-	<form action="/admin/sg/basicEnd" name="basic_add_form" method="post" class="basic_form" >
+   <form action="/admin/sg/basicEnd" name="basic_add_form" method="post" class="basic_form" >
     <div id="basicReplyForm">
     <input type="text" name="replyBasic" class="replyContent" placeholder="기본 답변 내용을 입력하세요." required style="width:535px"></input>
     <button type="submit" class="BasicBtns" >등록</button>
     <button type="reset" class="BasicBtns" >취소</button>
     </div>
-  	</form>
+     </form>
   
 </div>
 <script>
 function checkTableRows() {
     const table = document.getElementById('basicTable');
- 	// 헤더 행을 제외
+    // 헤더 행을 제외
     const rowCount = table.getElementsByTagName('tr').length - 1; 
     const form = document.querySelector('.basic_form');
     let message = document.getElementById('maxRowsMessage');
 
     // 기본답변 10개까지 작성 막아놓은 함수
     if (rowCount >= 10) {
-    	// 10개 이상 넘어가면 등록 폼 display none
+       // 10개 이상 넘어가면 등록 폼 display none
         form.style.display = 'none';
         if (!message) {
-        	// 메시지로 보여주기 
+           // 메시지로 보여주기 
             message = document.createElement('h4'); // h3 대신 h2를 사용하여 크기를 키움
             message.id = 'noAdd';
             message.style.color = 'black';
