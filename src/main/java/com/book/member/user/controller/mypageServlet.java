@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.book.member.user.dao.AttendDao;
-import com.book.member.user.dao.MypageDao;
+import com.book.member.user.dao.Mypagedao;
 import com.book.member.user.vo.User;
 
 @WebServlet("/user/mypage")
@@ -29,7 +29,7 @@ public class mypageServlet extends HttpServlet {
 
         int userNo = thisUser.getUser_no();
 
-        MypageDao mpd = new MypageDao();
+        Mypagedao mpd = new Mypagedao();
         AttendDao atd = new AttendDao();
         // 이벤트 참여 수, 독후감 수, 문의사항 수, 출석일 수, 마지막 접속일
         int evCount = mpd.eventCount(userNo);

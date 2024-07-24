@@ -342,7 +342,7 @@
                 <li class="menu-item">
                 	<a href="#">독후감 목록</a>
                     <ul class="submenu">
-                        <li><a href="/user/bookList">&nbsp;&nbsp;&nbsp;&nbsp; 작성된 독후감</a></li>
+                        <li><a href="/user/textList">&nbsp;&nbsp;&nbsp;&nbsp; 작성된 독후감</a></li>
                         <li><a href="/user/saveTextList">&nbsp;&nbsp;&nbsp;&nbsp; 나만보기</a></li>
                     </ul>
                 </li>

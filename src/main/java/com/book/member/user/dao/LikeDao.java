@@ -23,7 +23,7 @@ public class LikeDao {
 		try {
 			conn.setAutoCommit(false);
 			// Like 테이블에 유저넘버, 카테고리넘버, 독후감 넘버 넣기 
-			String sql = "INSERT INTO `like` (user_no, book_category_no, booktext_no)"
+			String sql = "INSERT INTO `like` (user_no, books_category_no, booktext_no)"
 					+ "VALUES (?, ?, ?)";
 			
 			pstmt = conn.prepareStatement(sql);

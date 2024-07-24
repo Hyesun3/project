@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 
 import com.book.member.user.vo.User;
 
-public class MypageDao {
+public class Mypagedao {
 
     public int eventCount(int userNo) {
         Connection conn = getConnection();
