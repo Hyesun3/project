@@ -4,8 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>이벤트 추가</title>
-<!-- <link href="../resources/css/event/eventCreate.css" rel="stylesheet" type="text/css"> -->
+<title>Knock Book</title> 
 <style>  
 
  	body {
@@ -30,8 +29,8 @@
         margin-right: 10px; 
         background-color: #fff;
         color: #333;
-        height: 30px;  
-        width : 140px; 
+        height: 35px;  
+        width : 160px; 
     }
 
     select:focus {
@@ -53,6 +52,7 @@
        align-items: center;
        margin-bottom: 10px;
    }
+   
    
    .form-group label {
        width: 150px;  
@@ -163,6 +163,7 @@
     #eventCancelBtn:hover {
         background-color: #e53935;  
     }
+     
     
 </style>
 </head>
@@ -269,31 +270,19 @@
 	</main>
 	</section>
     <script src="../../../resources/js/eventCreate.js"></script> 
-    <script>
-	    document.addEventListener('DOMContentLoaded', function() {
-	        // 페이지 로드 시 startDate2의 기본 min 값을 내일로 설정
-	        setInitialMinValue();
-	
-	        // startDate2 값이 변경될 때마다 min 속성 업데이트
-	        document.getElementById('startDate2').addEventListener('change', function() {
-	            setMinValue();
-	        });
-	    });
-	
+    <script>   
 	    function setInitialMinValue() {
 	        const startDate2 = document.getElementById('startDate2');
 	        const endDate2 = document.getElementById('endDate2');
 	        const progressDate2 = document.getElementById('progressDate2');
 	
 	        const today = new Date();
-	        today.setDate(today.getDate() + 1); // 현재 날짜에 1일을 더하여 내일로 설정
-	
-	        // 내일 날짜를 `datetime-local` 형식에 맞게 변환
+	        today.setDate(today.getDate() + 1);  
+	 
 	        const tomorrow = today.toISOString().slice(0, 16);
 	
-	        startDate2.min = tomorrow; // startDate2의 기본 min 속성을 내일 날짜로 설정
-	
-	        // 기본 설정 후, endDate2와 progressDate2의 초기 상태 설정
+	        startDate2.min = tomorrow;  
+	 
 	        endDate2.disabled = true;
 	        progressDate2.disabled = true;
 	    }
@@ -302,8 +291,7 @@
 	        const startDate2 = document.getElementById('startDate2');
 	        const endDate2 = document.getElementById('endDate2');
 	        const progressDate2 = document.getElementById('progressDate2');
-	
-	        // startDate2의 선택된 값으로 min 속성 업데이트
+	 
 	        if (startDate2.value) {
 	            endDate2.disabled = false;
 	            const startDate = new Date(startDate2.value);
@@ -316,7 +304,7 @@
 	                if (endDate2.value) {
 	                    const endDate = new Date(endDate2.value);
 	                    endDate.setDate(endDate.getDate() + 1);
-	                    const dayAfterEnd = endDate.toISOString().slice(0, 10); // YYYY-MM-DD 형식으로 변환
+	                    const dayAfterEnd = endDate.toISOString().slice(0, 10); 
 	                    progressDate2.min = dayAfterEnd;
 	                    progressDate2.disabled = false;
 	                } else {

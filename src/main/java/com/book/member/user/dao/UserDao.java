@@ -265,7 +265,7 @@ public class UserDao {
                   rs.getString("user_nickname"),
                   rs.getInt("user_active"),
                   rs.getTimestamp("user_create").toLocalDateTime());
-            System.out.println("dao");
+        
          }
       }catch(Exception e) {
          e.printStackTrace();
@@ -441,7 +441,7 @@ public class UserDao {
             }
            sql += " LIMIT " + u.getLimitPageNo() + ", " + u.getNumPerPage();
            
-           System.out.println("Generated SQL: " + sql);
+   
            
            pstmt = conn.prepareStatement(sql);
            rs = pstmt.executeQuery();
@@ -456,7 +456,7 @@ public class UserDao {
                        rs.getTimestamp("user_create").toLocalDateTime());
                list.add(user);
            }
-           System.out.println(list);
+          
        } catch (Exception e) {
            e.printStackTrace();
        } finally {
@@ -488,5 +488,32 @@ public class UserDao {
            close(pstmt);
        }
        return result;
+   }
+   
+   public User getUserById(int no) {
+       User user = null;
+       
+       String query = "SELECT * FROM users WHERE user_no = ?";
+       
+       try (Connection conn = getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(query)) {
+           pstmt.setInt(1, no);
+           try (ResultSet rs = pstmt.executeQuery()) {
+               if (rs.next()) {
+                   user = new User();
+                   user.setUser_no(rs.getInt("user_no"));
+                   user.setUser_id(rs.getString("user_id"));
+                   user.setUser_pw(rs.getString("user_pw"));
+                   user.setUser_name(rs.getString("user_name"));
+                   user.setUser_nickname(rs.getString("user_nickname"));
+                   user.setUser_email(rs.getString("user_email"));
+                   user.setUser_active(rs.getInt("user_active"));
+                   user.setUser_create(rs.getTimestamp("user_create").toLocalDateTime());
+               }
+           }
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+       return user;
    }
 }

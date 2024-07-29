@@ -26,7 +26,7 @@ public class SaveBooktextCheckServlet  extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String save_no = request.getParameter("save_no");
-        System.out.println(save_no);
+     
         List<Map<String, String>> list = new BookTextDao().checkSave(save_no);
         request.setAttribute("resultList", list);
 

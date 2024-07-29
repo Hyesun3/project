@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <title>Knock Book</title> 
    <style>
+   <style>
 /* 한나체Pro */
 @font-face {
     font-family: 'BMHANNAPro';
@@ -19,7 +20,6 @@
 }
 .main_content {
     width: 75vw;
-    height: 740px;
     margin: 5rem auto;
     background-color: rgb(247, 247, 247);
     display: flex;
@@ -116,6 +116,7 @@
    border-radius: 20px;
 }
 </style> 
+</style>
 <body>
     <%@ include file="../../include/header.jsp" %>
    <div class="main_content">
@@ -147,7 +148,7 @@
             </ul>
         </div>
         <div class="section2">
-         <%@ include file="../sg/list.jsp" %>
+         <%@ include file="../sg/detail.jsp" %>
         </div> 
     </div>
 </body> 

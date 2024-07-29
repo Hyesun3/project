@@ -40,11 +40,13 @@ public class UserEditEndServlet extends HttpServlet {
       response.setContentType("text/html; charset=UTF-8");
       PrintWriter writer = response.getWriter();
       if (result == -1) {
-            // 이메일당 계정 수 제한 초과
+         
            writer.println("<script>alert('해당 이메일로는 더 이상 계정을 생성할 수 없습니다. (최대 3개)');location.href='/views/member/user/edit.jsp';</script>");
            writer.flush(); 
            return;
         } else if (result > 0) {
+        	User updatedUser = new UserDao().getUserById(no);
+            session.setAttribute("user", updatedUser);
             writer.println("<script>alert('회원정보가 정상적으로 수정되었습니다.');location.href='/';</script>");
            writer.flush(); 
            return;

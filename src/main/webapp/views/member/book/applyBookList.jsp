@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>6캔두잇</title>
+    <title>Knock Book</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
@@ -15,6 +15,12 @@
      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
 
+	    .search_board_form{
+	       display: flex;
+	       justify-content: center; 
+	       align-items: center; 
+	    }
+    
         .center {
             text-align: center;
         }
@@ -175,7 +181,9 @@
         <div class="search">
 
             <form class="search_board_form" action="/book/applyList" method="get">
-                <input type="text" name="apply_bk_title" placeholder="신청도서이름을 입력해주세요">
+               <input type="text" name="apply_bk_title" 
+       value="<%= request.getAttribute("searchContent") != null ? request.getAttribute("searchContent") : "" %>" 
+       placeholder="신청도서이름을 입력해주세요">
                <input type="submit" value="검색">
                
 

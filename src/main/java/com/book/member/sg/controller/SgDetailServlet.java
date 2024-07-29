@@ -30,7 +30,7 @@ public class SgDetailServlet extends HttpServlet {
       
        Suggestion sgDetail = new SgMemDao().detailSg(sgOp);
        SuggestionReply sgReply = new SgAdmDao().getReplyList(sgNo);
-       System.out.println("servelt"+sgReply);
+
         if (sgDetail != null) {
             request.setAttribute("sgReply", sgReply);
                request.setAttribute("sgDetail", sgDetail);

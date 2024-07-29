@@ -4,7 +4,7 @@
 <html> 
 <head>
 <meta charset="UTF-8">
-<title>비밀번호 확인 실패</title>
+<title>Knock Book</title>
 </head>
 <body>
 	<script>

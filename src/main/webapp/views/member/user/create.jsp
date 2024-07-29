@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>Knock Book</title>
 <style>
-    @font-face {
+        @font-face {
 	    font-family: 'JalnanGothic';
 	    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff') format('woff');
 	    font-weight: normal;
@@ -128,12 +128,12 @@
                     <input type="text" oninput="validateId()" name="id" id="id" placeholder="아이디를 입력해주세요." style="width: 500px;">
                     <input type="button" value="아이디 중복 확인" onclick="checkId();">
                 </div>
-               <span id="tooltip-text" style="font-size: 10px;color: red; position: relative; top: -15px; left: 140px;">길이가 8~16자리 이하의 영문 대/소문자, 숫자, 특수문자(@$!%*?&)만 사용 가능합니다.</span>
+                <span id="tooltipText" style="font-size: 10px;color: red; position: relative; top: -15px; left: 140px;">길이가 8~16자이며 첫 글자가 영문자인 영문자 숫자 문자열만 사용 가능합니다.</span>
                 <div class="form-group">
                     <label for="pw">비밀번호</label>
                     <input type="password" oninput="validatePassword()" placeholder="비밀번호를 입력해주세요." id="pw" name="pw" style="width: 500px;">
                 </div>
-                <span id="tooltip-text" style="font-size: 10px;color: red; position: relative; top: -15px; left: 140px;">길이가 8~16자리 이하의 영문 대/소문자, 숫자, 특수문자만 사용 가능합니다.</span>
+                <span id="tooltip-text" style="font-size: 10px;color: red; position: relative; top: -15px; left: 140px;">길이가 8~16자리 이하의 영문 대/소문자, 숫자, 특수문자(@$!%*?&)만 사용 가능합니다.</span>
                 <div class="form-group">
                     <label for="chpw">비밀번호 확인</label>
                     <input type="password" placeholder="비밀번호를 다시 입력해주세요." name="chpw" style="width: 500px;">
@@ -359,7 +359,7 @@
             alert("비밀번호가 일치하는지 확인해주세요.");
             form.pw.focus(); 
         } else if (!lengthPattern.test(form.pw.value)) {
-            alert('비밀번호는 8자에서 16자 사이의 영문자, 숫자 및 특수문자만 포함해야 합니다.');
+            alert('비밀번호는 8자에서 16자 사이의 영문자, 숫자 및 특수문자(@$!%*?&)만 포함해야 합니다.');
             form.pw.focus();
         } else if (!letterPattern.test(form.pw.value)) {
             alert('비밀번호는 적어도 하나의 영문자를 포함해야 합니다.');

@@ -31,7 +31,7 @@ public class mypageServlet extends HttpServlet {
 
         Mypagedao mpd = new Mypagedao();
         AttendDao atd = new AttendDao();
-        // 이벤트 참여 수, 독후감 수, 문의사항 수, 출석일 수, 마지막 접속일
+   
         int evCount = mpd.eventCount(userNo);
         int btCount = mpd.btCount(userNo);
         int sgCount = mpd.sgCount(userNo);
@@ -51,7 +51,7 @@ public class mypageServlet extends HttpServlet {
             }
         }
 
-        System.out.println(lastAt);
+  
         request.setAttribute("evCount", evCount);
         request.setAttribute("btCount", btCount);
         request.setAttribute("sgCount", sgCount);

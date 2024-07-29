@@ -68,8 +68,7 @@ public class EventCreateEndServlet extends HttpServlet {
                 event.setEvent_category(Integer.parseInt(mr.getParameter("eventCategory2")));
                 event.setEvent_quota(Integer.parseInt(mr.getParameter("eventQuota2")));
             } 
-            System.out.println("ok");
-            
+   
             Connection conn = getConnection();
             int result = new EventDao().createEvent(event, conn);
             close(conn); 
@@ -77,7 +76,7 @@ public class EventCreateEndServlet extends HttpServlet {
             RequestDispatcher view = request.getRequestDispatcher("/views/admin/event/eventList.jsp");
             
             if (result > 0) {
-            	System.out.println("success");
+       
             	response.sendRedirect(request.getContextPath() + "/event/list"); 
             }  
             

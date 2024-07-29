@@ -30,25 +30,22 @@ public class UpdateEndUserBooktextServlet extends HttpServlet {
         String bt_start = request.getParameter("bw_start_date");
         String bt_end = request.getParameter("bw_end_date");
         String bt_content = request.getParameter("bw_content");
-        System.out.println(bt_end);
-        System.out.println(bt_start);
+       
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate startDate = LocalDate.parse(bt_start, formatter);
         LocalDate endDate = LocalDate.parse(bt_end, formatter);
-        System.out.println(recommendation);
+    
         BookText bt = new BookText();
-         // 세션에서 가져온 사용자 정보 사용
         bt.setBooktext_no(Integer.parseInt(bt_no));
         bt.setRecommendation_no(Integer.parseInt(recommendation));
         bt.setBook_first_read(startDate);
         bt.setBook_end_read(endDate);
         bt.setBook_content(bt_content);
         int result = new BookTextDao().updateInfo(bt);
-        System.out.println(result);
+    
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter writer = response.getWriter();
             if (result > 0) {
-                // 성공 시 alert 창 띄우고 리디렉션
                 writer.println("<script>alert('독후감 수정이 완료되었습니다.'); location.href='/user/textList';</script>");
             } else {
                 writer.println("<script>alert('오류가 발생했습니다.'); location.href='/user/textList';</script>");

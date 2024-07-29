@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>도서 목록</title>
+<title>Knock Book</title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -92,11 +92,20 @@
         text-align: center;
         margin-top: 20px;
     }
+    	.word h3 {
+         margin: 30px 0px;
+         text-align: center;
+         font-size: 30px;
+           font-weight: bold;
+	}
 </style>
 </head>
 <body>
 <%@ include file="../../include/header.jsp" %>
 <section class="holeList">
+ <div class="word">
+	       <h3>임시저장</h3>
+	  </div>
     <div class="search">
         <form action="/user/saveTextList" name="search_board_form" method="get" class="search_board_form">
             <input type="text" name="bk_content" placeholder="검색하고자 하는 도서 이름을 검색하세요.">

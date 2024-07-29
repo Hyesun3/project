@@ -4,7 +4,7 @@
 <html> 
 <head>
 <meta charset="UTF-8">
-<title>아이디 찾기 실패</title>
+<title>Knock Book</title>
 </head>
 <body>
 	<script>

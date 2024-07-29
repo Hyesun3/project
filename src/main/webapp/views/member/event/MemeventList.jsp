@@ -9,16 +9,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>이벤트 목록</title>
+<title>Knock Book</title>
 <style>
     body {
         background-color: rgb(247, 247, 247);
         -ms-overflow-style: none;
     }
     ::-webkit-scrollbar {
-     display: none;
-   } 
-
+     	display: none;
+    } 
+	
+	a:hover {
+		text-decoration: none;
+	}
     main {
         font-family: 'LINESeedKR-Bd'; 
         max-width: 1000px;
@@ -285,23 +288,20 @@
 </main>
 </section>
 <script>
-   function handleEventClick(eventNo, eventEndDate) {
-       // 현재 날짜를 기준으로 종료일 기준 30일 초과 여부 확인
+   function handleEventClick(eventNo, eventEndDate) { 
        var today = new Date();
        var endDate = new Date(eventEndDate);
-   
-       // 30일 차이 계산
+    
        var timeDiff = endDate.getTime() - today.getTime();
        var daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
    
        if (daysDiff < -30) {
            alert('종료된 이벤트입니다.');
-           return false; // 페이지 이동 차단
-       } else {
-           // 이벤트 상세 페이지로 이동
+           return false;  
+       } else { 
            window.location.href = '/user/event/detail?eventNo=' + eventNo;
        }
-       return false; // 페이지 이동 차단
+       return false; 
    }
 </script>
 </body>

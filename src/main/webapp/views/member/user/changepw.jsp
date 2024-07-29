@@ -4,7 +4,7 @@
 <html> 
 <head>
 <meta charset="UTF-8">
-<title>비밀번호 재설정</title>
+<title>Knock Book</title>
 <link href="../../resources/css/user/changepw.css" rel="stylesheet">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

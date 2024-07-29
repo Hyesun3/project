@@ -5,133 +5,172 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>독후감 세부 페이지</title>
+    <title>Knock Book</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-    *{
-   font-family: 'Ownglyph_meetme-Rg';
+  
+    body {
+        background-color: rgb(247, 247, 247);
     }
-        body {
-            background-color: rgb(247, 247, 247);
-        }
-        #detail_container {
-            width: 80%;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 20px;
-            border: 1px solid #ddd;s
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .detail_section {
-            margin-bottom: 20px;
-        }
-        .detail_section h4 {
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .detail_section p {
-            margin: 0;
-            font-size: 16px;
-        }
-        .detail_image {
-            text-align: center;
-        }
-        .detail_image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-
-       .replyCount{
-margin-bottom: 20px;
-}
-
-        .bkReplyContainer {
-   width: 900px;
-   margin: auto;
-   overflow: hidden;
-   padding: 20px;
-   position: relative;
-}
-
-.replyDiv {
-   width: 900px;
-   height: 200px;
-}
-
-.btUser{
-margin-top:15px
-}
-
-.btParentReply{
-border-top:1px solid #ddd;
-}
-
-.btChildReply{
-margin-left: 50px;
-border-top:1px solid #ddd;
-}
-
-.write {
-   width: 95%;
-   padding: 20px;
-   border-radius: 5px;
-   border: 1px solid #ccc;
-   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-   resize: none;
-   margin-top: 20px
-}
-
-.write:focus {
-   outline: none;
-   border: none;
-}
-
-.btReplyContent {
-   width: 95%;
-   height: 100px;
-   padding: 10px;
-   resize: none;
-   margin-top: 10px;
-}
-
-#reBtn{
-border:none;
-margin-bottom: 10px;
-display:flex;
-justify-content:right;
-}
-
-.replyBtns {
-   margin-left: 10px;
-   width: 50px;
-   height: 30px;
-   border-radius: 15%;
-   text-align: center;
-   background: #575756;
-   color: #fffbfb;
-   font-size: 14px;
-   justify-content: center;
-   align-items: center;
-   cursor: pointer;
-   text-decoration: none;
-   border: none;
-}
-
-.btn_gr {
-   margin-top: 10px;
-   display: flex;
-   justify-content: flex-end;
-   margin-bottom: 10px;
-}
-
-
-.replyBtns:hover {
-   background-color: #e0e0e0;
-}
- .holeList {
+    
+ 	#book_info_area {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        max-width: 800px;
+        margin: 0 auto;
+        padding : 10px;
+    }
+    
+    .book_title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    
+    .book_content {
+        display: flex;
+        width: 100%;
+    }
+    
+    .detail_image {
+        flex: 0 0 200px;
+        margin-right: 30px;
+    }
+    
+    .detail_image img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .book_details {
+        flex: 1;
+        text-align: left; 
+        margin-left : 10px;
+    }
+    
+    .detail_section {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: flex-start;
+    }
+    
+    .detail_section span:first-child {
+        font-weight: bold;
+        margin-right: 10px;
+        min-width: 80px;
+    }
+    
+    .book_description {
+        margin-top: 40px;
+        text-align: left; 
+    }
+  
+	.button-group {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin : 20px 50px 20px 0; 
+    }
+    
+    .button-group form {
+        margin: 0;
+    }
+    
+    .button-group button {
+        width: 80px;
+    }
+    
+	.replyCount{
+		margin-bottom: 20px;
+	}
+	
+    .bkReplyContainer {
+	   width: 900px;
+	   margin: auto;
+	   overflow: hidden;
+	   padding: 20px;
+	   position: relative;
+	}
+	
+	.replyDiv {
+	   width: 900px;
+	   height: 200px;
+	}
+	
+	.btUser{
+	margin-top:15px
+	}
+	
+	.btParentReply{
+	border-top:1px solid #ddd;
+	}
+	
+	.btChildReply{
+	margin-left: 50px;
+	border-top:1px solid #ddd;
+	}
+	
+	.write {
+	   width: 95%;
+	   padding: 20px;
+	   border-radius: 5px;
+	   border: 1px solid #ccc;
+	   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	   resize: none;
+	   margin-top: 20px
+	}
+	
+	.write:focus {
+	   outline: none;
+	   border: none;
+	}
+	
+	.btReplyContent {
+	   width: 95%;
+	   height: 100px;
+	   padding: 10px;
+	   resize: none;
+	   margin-top: 10px;
+	}
+	
+	#reBtn{
+	border:none;
+	margin-bottom: 10px;
+	display:flex;
+	justify-content:right;
+	}
+	
+	.replyBtns {
+	   margin-left: 10px;
+	   width: 50px;
+	   height: 30px;
+	   border-radius: 15%;
+	   text-align: center;
+	   background: #575756;
+	   color: #fffbfb;
+	   font-size: 14px;
+	   justify-content: center;
+	   align-items: center;
+	   cursor: pointer;
+	   text-decoration: none;
+	   border: none;
+	}
+	
+	.btn_gr {
+	   margin-top: 10px;
+	   display: flex;
+	   justify-content: flex-end;
+	   margin-bottom: 10px;
+	}
+	
+	
+	.replyBtns:hover {
+	   background-color: #e0e0e0;
+	}
+ 	.holeList {
         font-family: 'LINESeedKR-Bd'; 
         max-width: 1000px;
         margin: 2rem auto;
@@ -150,65 +189,86 @@ justify-content:right;
          text-align: center;
          font-size: 30px;
 	}
-    
+	
+	.list_under {
+		background-color: rgba(194, 194, 194, 0.3);
+		text-align: center;
+		padding : 3px 2px 1px 1px;
+		border-radius: 10px;
+	}
+	
+	.list_under_content {
+		background-color: rgba(194, 194, 194, 0.3); 
+		padding : 3px 2px 1px 15px;
+		border-radius: 10px;
+		width : 60px;
+		margin-bottom: 15px;
+	}
+	
+	.detail_under { 
+		margin-left : 10px;
+		padding : 3px 2px 1px 1px;
+	}
     </style>
 </head>
 <body>
- <%@ include file="../../../views/include/header.jsp" %>
+<%@ include file="../../../views/include/header.jsp" %>
 
        <%-- 컨테이너 div --%>
 <section class ="holeList">
-<div class="form_">
-        <div class="word">
-	                <h3>도서 목록</h3>
-	            </div>
+<div class="form_"> 
             <%@ page import="com.book.member.book.vo.BookText, java.util.*" %>
             <% List<Map<String, String>> list = (List<Map<String, String>>) request.getAttribute("resultList");
             // for each문 시작
                for (Map<String, String> detail : list) { %>
-                <div class="detail_section">
-                   
-                    <p><%= detail.get("bk_title") %></p>
-                </div>
-                <div class="detail_section">
-                    <h4>카테고리</h4>
-                    <p><%= detail.get("bk_cate") %></p>
-                </div>
-                <div class="detail_section">
-                    <h4>작성자</h4>
-                    <p><%= detail.get("bt_writer") %></p>
-                </div>
-                <div class="detail_section">
-                    <h4>출판사</h4>
-                    <p><%= detail.get("bk_publisher") %></p>
-                </div>
-                <div class="detail_section">
-                    <h4>추천도</h4>
-                    <p><%= detail.get("recommendation") %></p>
-                </div>
-                <div class="detail_section">
-                    <h4>읽기 시작</h4>
-                    <p><%= detail.get("bt_start") %></p>
-                </div>
-                <div class="detail_section">
-                    <h4>읽기 종료</h4>
-                    <p><%= detail.get("bt_end") %></p>
-                </div>
-                <div class="detail_section">
-                    <h4>내용</h4>
-                    <p><%= detail.get("bt_content") %></p>
-                </div>
-                <div class="detail_section detail_image">
-                    <h4>책 이미지</h4>
-                    <img src="<%= detail.get("bk_img") %>" alt="책 이미지" width="300px">
-                </div>
-</div>
+				<div id="book_info_area">
+				    <div class="book_title">
+				        <%= detail.get("bk_title") %>
+				    </div>
+				    <div class="book_content">
+				        <div class="detail_image">
+				            <img src="<%= detail.get("bk_img") %>" alt="책 이미지">
+				        </div>
+				        <div class="book_details">
+				            <div class="detail_section">
+				                <span class="list_under">카테고리</span>
+				                <span class="detail_under"><%= detail.get("bk_cate") %></span>
+				            </div>
+				            <div class="detail_section">
+				                <span class="list_under">작성자</span>
+				                <span class="detail_under"><%= detail.get("bt_writer") %></span>
+				            </div>
+				            <div class="detail_section">
+				                <span class="list_under">출판사</span>
+				                <span class="detail_under"><%= detail.get("bk_publisher") %></span>
+				            </div>
+				            <div class="detail_section">
+				                <span class="list_under">추천도</span>
+				                <span class="detail_under"><%= detail.get("recommendation") %></span>
+				            </div>
+				            <div class="detail_section">
+				                <span class="list_under">읽기 시작</span>
+				                <span class="detail_under"><%= detail.get("bt_start") %></span>
+				            </div>
+				            <div class="detail_section">
+				                <span class="list_under">읽기 종료</span>
+				                <span class="detail_under"><%= detail.get("bt_end") %></span>
+				            </div>
+				        </div>
+				    </div>
+				    <div class="book_description"> 
+				    	<div class="list_under_content">내용</div>
+				        <span><%= detail.get("bt_content") %></span>
+				    </div>
+				</div>
+		</div>
                 <% User user_bt = (User) session.getAttribute("user");
                    if (user_bt != null) {
                    int userNumber = user_bt.getUser_no();
                    String a = detail.get("user_no");
                    String str = Integer.toString(user_bt.getUser_no());
                    if (a.equals(str)) { %>
+                   <div class="button-group">
                      <form action="/user/editCheck" method="post">
                       <input type="hidden" name="bt_no" value="<%= detail.get("bt_no") %>">
                       <button type="submit" class="btn btn-primary">수정</button>
@@ -216,14 +276,19 @@ justify-content:right;
                      <form action="/user/textDelete" method="post">
                      <input type="hidden" name="bt_no" value="<%= detail.get("bt_no") %>">
                      <button type="submit" class="btn btn-danger">삭제</button>
-                  </form>
+                  	</form>
+                  </div>
                 <% } %>
           <% } %>
                 <style>
+                #heart_area {
+                	margin-left: 10%;
+                	margin-bottom: 20px;
+                }
                   #heart{
-                      width: 20px;
-                   background-color: white;
-                   margin-bottom: 8px;
+                       width: 20px;
+	                   background-color: white;
+	                   margin-bottom: 8px; 
                   }
                   .red{fill: red;}
                   .gray{fill: gray;}
@@ -234,7 +299,7 @@ justify-content:right;
                      margin-left: 5px;
                   }
               </style>
-              <div style="background-color: white">
+              <div style="background-color: white" id="heart_area">
               <%-- 하트의 class명에 받아온 color값을 넣어서 class가 gray냐 red냐에 따라 css로 하트 색 바꿈 --%>
                  <svg id="heart" class="<%= request.getAttribute("color") %>"
                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

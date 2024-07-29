@@ -4,48 +4,21 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>6캔두잇</title>
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-        crossorigin="anonymous"
-    />
+    <title>Knock Book</title>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
-         * {
-            font-family: 'Ownglyph_meetme-Rg';
-        }
+       
         .write_container {
             display: flex;
             justify-content: center;
             align-items: flex-start;
             padding: 2vw;
         }
-        .form_write {
-            display: flex;
-            flex-direction: row;
-            gap: 2vw;
-            width: 80vw;
-            border: 1px solid black;
-            border-radius: 10px;
-            padding: 2vw;
-        }
-        .form_left {
-            flex: 2;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5vw;
-        }
-        .form_right {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .form_right img { 
-            max-width: 100%;
-            border-radius: 10px;
-        }
+
         .input-field {
             height: 50px;
             border-radius: 10px;
@@ -73,6 +46,51 @@
             font-size: 16px;
             width: 100%;
         }
+       .holeList {
+        font-family: 'LINESeedKR-Bd'; 
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 1rem 1rem;
+        background-color: white;
+        box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+      }
+        .center {
+        text-align: center;
+        margin-top: 20px;
+    }
+    	.word h3 {
+         margin: 30px 0px;
+         text-align: center;
+         font-size: 30px;
+           font-weight: bold;
+	}
+		.form_first {
+	 display:flex;
+	 gap: 2vw;
+	}
+	.form_second {
+	 display:flex;
+	 gap: 2vw;
+	}
+	.form_left {
+		gap:1vw;
+		display : flex;
+		flex-direction : column;
+		
+	}
+	.form_right {
+		margin-bottom : 20px;
+		width: 50%;
+		
+	}
+	.form_write{
+		gap: 1.5vw;
+		display : flex;
+		flex-direction : row;
+	}
+
+	
     </style>
 </head>
 <body>
@@ -81,7 +99,7 @@
 
     <section class="holeList">
         <div class="word">
-            <h3>독후감 작성</h3>
+            <h3>임시저장 수정</h3>
         </div>
         <form class="form_write" name="create_account_form" id="create_account_form" action="/user/saveTextEnd" method="post">
             <div class="form_left">
@@ -141,7 +159,7 @@
             <div class="form_right">
                 <img src="<%= book.get("bk_img") %>" alt="Book Image" />
                 <div class="bw_btn">
-                    <button type="button" class="btn btn-secondary" onclick="saveForm();">임시저장</button>
+                    <button type="button" class="btn btn-secondary" onclick="saveForm();">저장</button>
                     <button type="button" class="btn btn-secondary" onclick="deleteForm();">삭제</button>
                     <button type="button" class="btn btn-primary" onclick="submitForm();">제출</button>
                 </div>

@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>이벤트 상세 정보</title>
+    <title>Knock Book</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <style>   
@@ -100,9 +100,12 @@
       /* paging */
       @charset "UTF-8";
       
-      .center {
-          text-align: center; 
-      }
+       .center {
+        display : flex;
+        text-align: center;
+        justify-content : center;
+        margin-top: 20px;
+    }
       
       .pagination {
           display: inline-block; 
@@ -310,7 +313,7 @@
                        <tbody> 
                            <% 
                                List<Map<String, String>> list = (List<Map<String, String>>) request.getAttribute("parUserList"); 
-                               int pageSize = 3; // 한 페이지에 표시할 항목 수
+                               int pageSize = 10; // 한 페이지에 표시할 항목 수
                                int nowPage = request.getParameter("nowPage") == null ? 1 : Integer.parseInt(request.getParameter("nowPage"));
                                int startNo = (nowPage - 1) * pageSize + 1;
                                for (int i = 0; i < list.size(); i++) {

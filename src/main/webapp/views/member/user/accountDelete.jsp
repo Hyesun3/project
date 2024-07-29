@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <title>마이페이지 사이드바</title> 
+    <title>Knock Book</title> 
 	<script src="../../../resources/javascript/mypageSidebar.js"></script>  
 	<style>
 

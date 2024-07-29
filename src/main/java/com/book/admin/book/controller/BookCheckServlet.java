@@ -26,8 +26,7 @@ public class BookCheckServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int bookNo =Integer.parseInt(request.getParameter("books_no"));
-        System.out.println("책:"+bookNo);
+        int bookNo =Integer.parseInt(request.getParameter("books_no")); 
 
         List<Map<String, String>> list = new BookDao().checkBook(bookNo);
         request.setAttribute("resultList", list);

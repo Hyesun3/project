@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <title>마이페이지 사이드바</title> 
+    <title>Knock Book</title> 
 	<script src="../../../resources/javascript/mypageSidebar.js"></script>  
-<style>
+   <style>
 /* 한나체Pro */
 @font-face {
     font-family: 'BMHANNAPro';
@@ -27,23 +27,20 @@
     flex-direction: row;
 }
 /* 사이드바 */
-.section1 {
+.section1{
     width: 25%;
     margin-right: 2rem;
     height: 100%;
     background-color: white;
     font-family: 'BMHANNAPro';
-    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    overflow: hidden;  
+   box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+   border-radius: 20px;
 }
-
 .menu {
     list-style-type: none;
     padding: 0;
     height: 680px;
     background-color: white;
-    border-radius: 20px; 
 }
 
 .menu-item {
@@ -130,7 +127,7 @@
                 	<a href="#">독후감 목록</a>
                     <ul class="submenu">
                         <li><a href="/user/textList">&nbsp;&nbsp;&nbsp;&nbsp; 작성된 독후감</a></li>
-                        <li><a href="/user/saveTextList">&nbsp;&nbsp;&nbsp;&nbsp; 나만보기</a></li>
+                        <li><a href="/user/saveTextList">&nbsp;&nbsp;&nbsp;&nbsp; 임시저장</a></li>
                     </ul>
                 </li>
                 <li class="menu-item"><a href="/user/event/parList">이벤트 참여 내역</a></li>

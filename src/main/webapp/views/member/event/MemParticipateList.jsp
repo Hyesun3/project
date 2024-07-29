@@ -8,7 +8,7 @@
 <%@ page import="com.book.member.user.vo.User"%>
 <head>
 <meta charset="UTF-8">
-<title>사용자 이벤트 참여 내역</title>
+<title>Knock Book</title>
 <style>   
 
 .container {

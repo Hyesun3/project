@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.book.member.user.vo.User" %>  
 <meta charset="UTF-8">
-<title>회원 정보 수정</title>
+<title>Knock Book</title>
 <style>
 
     .text-center {

@@ -3,45 +3,7 @@
 <%@page import="com.book.member.user.vo.User" %>
 <meta charset="UTF-8">
 <style>
-   @charset "UTF-8";
-   
-   @font-face {
-       font-family: 'JalnanGothic';
-       src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff') format('woff');
-       font-weight: normal;
-       font-style: normal;
-   }
-   
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #fff;
-        height: 100vh;
-        padding: 0;
-        margin: 0;
-        font-family: Arial, sans-serif;
-    }
 
-    .container {
-        width: 100%;
-        max-width: 600px;
-        margin-top: -50px; 
-    }
-
-    #main_logo {
-        font-size: 33px;
-        color: rgb(224, 195, 163);
-        text-decoration: none;
-        font-family: 'JalnanGothic';
-    }
-   
-   .navbar {
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       height: 100px;
-   }
    
    .text-center {
        margin-bottom: 30px; 

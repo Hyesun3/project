@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>6캔두잇</title>
+    <title>Knock Book</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
@@ -171,6 +171,12 @@
         text-align: center;
         margin-top: 20px;
     }
+    	.word h3 {
+         margin: 30px 0px;
+         text-align: center;
+         font-size: 30px;
+           font-weight: bold;
+	}
     </style>
  <script>
         $(document).ready(function() {
@@ -194,9 +200,11 @@
     </script>
 <% } %>
    <%@ include file="../../include/header.jsp" %>
-
+ 
 <section class ="holeList">
-
+       <div class="word">
+	       <h3>독후감 작성</h3>
+	  </div>
     <div id="section_wrap" class="container">
         <div class="search">
             <form action="/user/textList" name="search_board_form" method="get" class="search_board_form">

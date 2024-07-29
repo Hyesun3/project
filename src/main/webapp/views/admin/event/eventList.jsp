@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>이벤트 목록</title>
+<title>Knock Book</title>
 </head>
 <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -125,12 +125,23 @@
         box-shadow: 0 0 5px rgba(165, 165, 165, 0.5);
     }
     
+    #evList_Btn {
+    	background-color: rgb(224, 195, 163);
+    }
+    
+    #evList_Btn:hover {
+    	background-color: #c7ad91;
+    }
+    
 	/* paging */
 	@charset "UTF-8";
 	
-	.center {
-	    text-align: center;
-	}
+    .center {
+        display : flex;
+        text-align: center;
+        justify-content : center;
+        margin-top: 20px;
+    }
 	
 	.pagination {
 	    display: inline-block;
@@ -146,9 +157,9 @@
 	}
 	
 	.pagination a.active {
-	    background-color: #A5A5A5;
+	    background-color: rgb(224, 195, 163);
 	    color: white;
-	    border: 1px solid #A5A5A5;
+	    border: 1px solid rgb(224, 195, 163);
 	}
 	
 	.pagination a:hover:not(.active) {
@@ -201,7 +212,7 @@
 				    </select>
     
 	                <input type="text" id="evTitle" name="evTitle">
-	                <button type="submit" class="btn btn-outline-warning">검색</button>
+	                <button type="submit" class="btn" id="evList_Btn">검색</button>
 	            </form>
 	            <div class="event_list">
 	                <% if (request.getAttribute("resultList") == null || ((List<Map<String, String>>) request.getAttribute("resultList")).isEmpty()) { %>

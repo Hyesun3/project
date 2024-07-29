@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입 성공</title>
+<title>Knock Book</title>
 <link href='../../resources/css/member/user/create_success.css'
 	rel="stylesheet" type="text/css">
 </head>

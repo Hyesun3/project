@@ -2,7 +2,7 @@ package com.book.member.user.controller;
 
 import java.io.IOException;
 
-
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,7 +38,8 @@ public class UserDeleteEndServlet extends HttpServlet {
       if(result > 0) {
          session.removeAttribute("user");
          session.invalidate();
-         response.sendRedirect("/views/user/delete_success.jsp");
+ 		RequestDispatcher view = request.getRequestDispatcher("/views/member/user/delete_success.jsp");
+ 		view.forward(request, response);
       }else {
          request.setAttribute("errorMessage", "비밀번호가 올바르지 않거나 탈퇴 처리 중 오류가 발생했습니다.");
       }

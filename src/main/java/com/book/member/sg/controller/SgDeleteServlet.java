@@ -33,10 +33,7 @@ public class SgDeleteServlet extends HttpServlet {
 			 PrintWriter writer = response.getWriter();
 			 writer.println("<script>alert('삭제 되었습니다!'); location.href='/member/sg/list';</script>");
 			 writer.close();
-		 }else {
-	         System.out.println("실패");
-	      }  
-		 
+		 }
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

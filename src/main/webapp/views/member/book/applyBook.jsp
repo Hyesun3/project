@@ -5,7 +5,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>도서 신청</title>
+    <title>Knock Book</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -13,49 +13,49 @@
       crossorigin="anonymous"
     />
 <style>
-body{
- background-color: rgb(247, 247, 247);
-}
-h2{
-	margin-bottom : 30px;
-}
-.write_container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 50vh;
-        }
-        .form_write {
-            padding: 7rem;
-            border : 1px solid gray;
-            border-radius: 10px;
-            width: 50vw;
-            height : 600px;
-            margin-left : 110px;
-            margin-top : 70px;
-        }
-        .form_write input, .form_write textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 1rem;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            transition: border-color 0.2s;
-        }
-        .form_write input:focus, .form_write textarea:focus {
-            border-color: #80bdff;
-            outline: none;
-        }
-        .bw_btn {
-            text-align: right;
-        }
-        .btn-custom {
-            background-color: #6c757d;
-            color: white;
-        }
-        .btn-custom:hover {
-            background-color: #5a6268;
-        }
+	body{
+	 background-color: rgb(247, 247, 247);
+	}
+	h2{
+		margin-bottom : 30px;
+	}
+	.write_container {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 50vh;
+     }
+     .form_write {
+         padding: 7rem;
+         border : 1px solid gray;
+         border-radius: 10px;
+         width: 50vw;
+         height : 600px;
+         margin-left : 110px;
+         margin-top : 70px;
+     }
+     .form_write input, .form_write textarea {
+         width: 100%;
+         padding: 10px;
+         margin-bottom: 1rem;
+         border: 1px solid #ced4da;
+         border-radius: 5px;
+         transition: border-color 0.2s;
+     }
+     .form_write input:focus, .form_write textarea:focus {
+         border-color: #80bdff;
+         outline: none;
+     }
+     .bw_btn {
+         text-align: right;
+     }
+     .btn-custom {
+         background-color: #6c757d;
+         color: white;
+     }
+     .btn-custom:hover {
+         background-color: #5a6268;
+     }
 
 </style>
   </head>

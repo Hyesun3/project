@@ -35,10 +35,9 @@ public class UserCheckTableServlet extends HttpServlet {
        if(nowPage != null) {
           u.setNowPage(Integer.parseInt(nowPage));
        }
-       //전체 목록 개수 조회 -> 페이징바 구성 
+      
        u.setTotalData(new UserDao().selectBoardCount(u));
-       System.out.println(u);
-       
+ 
        List<User> list = new UserDao().selectBoardList(u,order);
        
        request.setAttribute("paging", u);

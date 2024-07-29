@@ -27,7 +27,7 @@ public class ApplyBookListServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String title = request.getParameter("apply_bk_title");
-        System.out.println("책 제목: "+title);
+
         ApplyBook ab = new ApplyBook();
 
         String nowPage = request.getParameter("nowPage");
@@ -39,7 +39,6 @@ public class ApplyBookListServlet extends HttpServlet {
         ab.setTotalData(new ApplyBookDao().selectBoardCount(ab, title));
 
         List<Map<String,String>> list = new ApplyBookDao().selectApplyList(ab, title);
-        System.out.println(list);
         request.setAttribute("paging", ab);
         request.setAttribute("resultList", list);
 

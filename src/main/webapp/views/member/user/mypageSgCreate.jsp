@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <title>마이페이지 사이드바</title> 
-	<script src="../../../resources/javascript/mypageSidebar.js"></script>  
-<style>
+    <title>Knock Book</title> 
+   <style>
 /* 한나체Pro */
 @font-face {
     font-family: 'BMHANNAPro';
@@ -27,23 +26,20 @@
     flex-direction: row;
 }
 /* 사이드바 */
-.section1 {
+.section1{
     width: 25%;
     margin-right: 2rem;
     height: 100%;
     background-color: white;
     font-family: 'BMHANNAPro';
-    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    overflow: hidden;  
+   box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+   border-radius: 20px;
 }
-
 .menu {
     list-style-type: none;
     padding: 0;
     height: 680px;
     background-color: white;
-    border-radius: 20px; 
 }
 
 .menu-item {
@@ -119,10 +115,10 @@
    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
    border-radius: 20px;
 }
-</style>
+</style> 
 <body>
     <%@ include file="../../include/header.jsp" %>
-    <div class="main_content">
+   <div class="main_content">
         <div class="section1">
             <ul class="menu">
                 <li class="menu-item"><a href="/user/mypage">나의 정보</a></li>
@@ -130,7 +126,7 @@
                 	<a href="#">독후감 목록</a>
                     <ul class="submenu">
                         <li><a href="/user/textList">&nbsp;&nbsp;&nbsp;&nbsp; 작성된 독후감</a></li>
-                        <li><a href="/user/saveTextList">&nbsp;&nbsp;&nbsp;&nbsp; 나만보기</a></li>
+                        <li><a href="/user/saveTextList">&nbsp;&nbsp;&nbsp;&nbsp; 임시저장</a></li>
                     </ul>
                 </li>
                 <li class="menu-item"><a href="/user/event/parList">이벤트 참여 내역</a></li>
@@ -151,49 +147,49 @@
             </ul>
         </div>
         <div class="section2">
-			<%@ include file="../sg/create.jsp" %>
+         <%@ include file="../sg/create.jsp" %>
         </div> 
     </div>
 </body> 
     <!-- 마이페이지 드롭다운 -->
     <script>
-	  document.addEventListener("DOMContentLoaded", function() {
-	      const menuItems = document.querySelectorAll(".menu-item > a");
-	
-	      menuItems.forEach(function(item) {
-	          const submenu = item.nextElementSibling;
-	          let isOpen = false;
-	
-	          item.addEventListener("click", function(event) {
-	              if (submenu) {
-	
-	                  if (isOpen) {
-	                      submenu.style.animation = "slide-up 0.3s ease";
-	                      
-	                      setTimeout(function(){
-	                          submenu.style.display = "none";
-	                          submenu.style.animation = "";
-	                      }, 300);
-	
-	                      isOpen = false;
-	                  } else {
-	                      submenu.style.display = "block";
-	                      submenu.style.height = "auto";
-	                      void submenu.offsetWidth;
-	                      submenu.style.animation = "slide-down 0.3s ease";
-	                      submenu.style.height = submenu.scrollHeight + "px";
-	
-	                      isOpen = true;
-	                  }
-	              }
-	          });
-	      });
-	
-	      const submenuLinks = document.querySelectorAll(".submenu li a");
-	      submenuLinks.forEach(function(link) {
-	          link.addEventListener("click", function(event) {
-	          });
-	      });
-	  });
-	  </script>
+     document.addEventListener("DOMContentLoaded", function() {
+         const menuItems = document.querySelectorAll(".menu-item > a");
+   
+         menuItems.forEach(function(item) {
+             const submenu = item.nextElementSibling;
+             let isOpen = false;
+   
+             item.addEventListener("click", function(event) {
+                 if (submenu) {
+   
+                     if (isOpen) {
+                         submenu.style.animation = "slide-up 0.3s ease";
+                         
+                         setTimeout(function(){
+                             submenu.style.display = "none";
+                             submenu.style.animation = "";
+                         }, 300);
+   
+                         isOpen = false;
+                     } else {
+                         submenu.style.display = "block";
+                         submenu.style.height = "auto";
+                         void submenu.offsetWidth;
+                         submenu.style.animation = "slide-down 0.3s ease";
+                         submenu.style.height = submenu.scrollHeight + "px";
+   
+                         isOpen = true;
+                     }
+                 }
+             });
+         });
+   
+         const submenuLinks = document.querySelectorAll(".submenu li a");
+         submenuLinks.forEach(function(link) {
+             link.addEventListener("click", function(event) {
+             });
+         });
+     });
+     </script>
 </html>

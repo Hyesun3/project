@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>6캔두잇</title>
+    <title>Knock Book</title>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
@@ -14,8 +14,14 @@
        <link rel="stylesheet"
      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
-
-
+		body { 
+		    -ms-overflow-style: none;
+		}
+		
+		::-webkit-scrollbar {
+			display: none;
+		} 
+	
 
         .center {
             text-align: center;
@@ -316,7 +322,7 @@
 	            </div>
         <div class="search">
             <form action="/user/bookList" name="search_board_form" method="get" class="search_board_form">
-                <input type="text" name="bk_content" placeholder="검색하고자 하는 도서 이름을 검색하세요.">
+                <input type="text" name="bk_content" value="<%= request.getAttribute("searchContent") %>" placeholder="검색하고자 하는 도서 이름을 검색하세요.">
                 <input type="submit" value="검색">
             </form>
         </div>

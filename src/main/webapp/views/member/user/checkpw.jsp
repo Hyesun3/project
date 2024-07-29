@@ -5,7 +5,7 @@
 <html> 
 <head>
 <meta charset="UTF-8">
-<title>정보수정/비밀번호 확인</title>
+<title>Knock Book</title>
 <style>
 	@charset "UTF-8";
 

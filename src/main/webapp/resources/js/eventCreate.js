@@ -7,7 +7,7 @@ function showFormSection() {
     const selectedOption = document.getElementById('eventType').value;
     document.getElementById('form-section' + selectedOption).style.display = 'block';
     
-    validateForm(); // 선택된 섹션을 표시한 후 폼을 유효성 검사합니다.
+    validateForm();  
 }
 
 function toggleEndDate(section) {
@@ -22,7 +22,7 @@ function toggleEndDate(section) {
         endDate.value = '';
     }
     
-    validateForm(); // 종료 날짜 필드를 변경한 후 폼을 유효성 검사합니다.
+    validateForm(); 
 }
 
 function setMinValue() {
@@ -37,7 +37,7 @@ function setMinValue() {
         endDate2.value = '';
     }
     
-    validateForm(); // 모집 종료 날짜 필드를 변경한 후 폼을 유효성 검사합니다.
+    validateForm(); 
 }
 
 function previewImage(event, section) {
@@ -66,7 +66,7 @@ function previewImage(event, section) {
     };
     reader.readAsDataURL(file);
     
-    validateForm(); // 이미지 파일을 변경한 후 폼을 유효성 검사합니다.
+    validateForm();  
 }
 
 function deleteImage(section) {
@@ -83,7 +83,7 @@ function deleteImage(section) {
     const inputFile = document.getElementById('eventimage' + section);
     inputFile.value = '';
     
-    validateForm(); // 이미지 파일을 삭제한 후 폼을 유효성 검사합니다.
+    validateForm(); 
 }
 
 function validateForm() {

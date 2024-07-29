@@ -25,8 +25,7 @@ public class AdminApplyListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String title = request.getParameter("apply_bk_title");
-        System.out.println("책 제목: "+title);
+        String title = request.getParameter("apply_bk_title"); 
         ApplyBook ab = new ApplyBook();
 
         String nowPage = request.getParameter("nowPage");
@@ -38,7 +37,7 @@ public class AdminApplyListServlet extends HttpServlet {
         ab.setTotalData(new ApplyBookDao().selectBoardCount(ab, title));
 
         List<Map<String,String>> list = new ApplyBookDao().selectApplyList(ab, title);
-        System.out.println(list);
+
         request.setAttribute("paging", ab);
         request.setAttribute("resultList", list);
 

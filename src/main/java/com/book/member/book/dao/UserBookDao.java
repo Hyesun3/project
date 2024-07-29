@@ -25,7 +25,7 @@ public class UserBookDao {
                 sql += " WHERE a.books_title LIKE CONCAT('%','"+content+"','%')";
             }
 
-            sql += " LIMIT "+b.getLimitPageNo()+", "+8;
+            sql += " LIMIT "+b.getLimitPageNo()+", "+ b.getNumPerPage();
 
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();

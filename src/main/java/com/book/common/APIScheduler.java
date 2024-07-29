@@ -44,7 +44,7 @@ public class APIScheduler extends HttpServlet {
 			
 			CronTrigger trigger = newTrigger()
 							.withIdentity("trigger1", "group1")
-							.withSchedule(cronSchedule("0/10 * * * * ?")) // 10초마다 
+							.withSchedule(cronSchedule("0/30 * * * * ?")) // 30초마다 
 							.build();
 			scheduler.scheduleJob(job, trigger);
 			

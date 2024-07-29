@@ -6,22 +6,17 @@
 <%@ page import="com.book.member.event.dao.MemEventDao" %>
 <%@ page import="com.book.admin.event.vo.Event"%> 
 <%@ page import="java.util.Date"%>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
-    
-    
-   <!-- Bootstrap JS and dependencies -->
+ 
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+     
    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
        
     <style>
         @charset "UTF-8";
-
-        /* Custom Fonts */
+  
         @font-face {
             font-family: 'GangwonEduPowerExtraBoldA';
             src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduPowerExtraBoldA.woff') format('woff');
@@ -87,6 +82,10 @@
             background-color: rgb(247, 247, 247);
         }
 
+		.main_header{
+			padding : 0 10px;
+		}
+		
         .main_logo {
             font-size: 30px;
             color: rgb(224, 195, 163);
@@ -111,6 +110,7 @@
 
         #notification-icon {
             position: relative;
+            margin-top:6px;
         }
 
         .notification-count {

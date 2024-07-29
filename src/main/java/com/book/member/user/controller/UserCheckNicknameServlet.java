@@ -27,7 +27,7 @@ public class UserCheckNicknameServlet extends HttpServlet {
     private void checkId(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String nickname = request.getParameter("nickname");
         User checknickname = new UserDao().checknickname(nickname);
-        System.out.println(nickname);
+    
         if (checknickname != null) {
             response.getWriter().write("duplicate");
         } else {

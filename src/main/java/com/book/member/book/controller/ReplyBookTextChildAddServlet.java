@@ -31,11 +31,7 @@ public class ReplyBookTextChildAddServlet extends HttpServlet {
         int result = new BookReplyDao().bkchildReplyAdd(btNo,btUserNo,btParentNo,btReply);
 
         if(result > 0) {
-            System.out.println("성공");
-            // 댓글 추가 성공시 원래 있던 페이지 ( 상세조회 )
-            response.sendRedirect(request.getContextPath() + "/book/detail?bt_no="+btNo);
-        }else {
-            System.out.println("실패");
+ response.sendRedirect(request.getContextPath() + "/book/detail?bt_no="+btNo);
         }
     }
 

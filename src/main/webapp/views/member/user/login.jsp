@@ -4,7 +4,7 @@
 <html> 
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title>Knock Book</title>
 <link href='../../resources/css/member/user/login.css' rel="stylesheet" type="text/css">
 </head>
 <style>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원탈퇴 성공</title> 
+<title>Knock Book</title> 
 <style>
    @charset "UTF-8";
    
@@ -82,10 +82,7 @@
 </head>
 <body>
    <section class="main_header">
-      <header>
-         <div id="header_div">
-            <a href="/" class="main_logo" style="margin-left: 100px;">Knock Book</a>
-         </div>
+      <header> 
       </header>
       <main>
          <div style="font-size: 40px;">웹 사이트 회원 탈퇴 완료</div>

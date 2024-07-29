@@ -4,7 +4,7 @@
 <html> 
 <head>
 <meta charset="UTF-8">
-<title>아이디 찾기</title> 
+<title>Knock Book</title> 
 <style>
 	@charset "UTF-8";
 	

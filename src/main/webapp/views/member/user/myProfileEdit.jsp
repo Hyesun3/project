@@ -103,7 +103,7 @@
 	</style>
 <body>
     <%@ include file="../../include/header.jsp" %>
-   <div class="main_content">
+    <div class="main_content">
         <div class="section1">
             <ul class="menu">
                 <li class="menu-item"><a href="/user/mypage">나의 정보</a></li>

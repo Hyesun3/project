@@ -27,7 +27,7 @@ public class UserCheckIdServlet extends HttpServlet {
     private void checkId(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String id = request.getParameter("id");
         User checkid = new UserDao().checkid(id);
-        System.out.println(id);
+      
         if (checkid != null) {
             response.getWriter().write("duplicate");
         } else {

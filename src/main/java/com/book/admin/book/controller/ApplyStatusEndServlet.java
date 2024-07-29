@@ -22,12 +22,9 @@ public class ApplyStatusEndServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         int applyNo = Integer.parseInt(request.getParameter("apply_no"));
-        int status = Integer.parseInt(request.getParameter("status"));
-        System.out.println(applyNo);
-        System.out.println(status);
+        int status = Integer.parseInt(request.getParameter("status")); 
 
-        int result = new ApplyBookDao().updateApplyStatus(applyNo, status);
-        System.out.println("여기는 : " + result);
+        int result = new ApplyBookDao().updateApplyStatus(applyNo, status); 
 
         PrintWriter writer = response.getWriter();
         if (result > 0) {

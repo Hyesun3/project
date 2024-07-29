@@ -26,10 +26,7 @@ public class MemEventReplyDeleteServelt extends HttpServlet {
 		
 		int result = new EventReplyDao().replyDelete(eventReplyNo);
 		if(result > 0) {
-			System.out.println("성공");
 			response.sendRedirect(request.getContextPath() + "/user/event/detail?eventNo="+eventNo+"&eventType="+eventTypeNo);
-		}else {
-			System.out.println("실패");
 		}
 	}
 
