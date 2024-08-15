@@ -13,8 +13,8 @@ import javax.mail.internet.MimeMessage;
 public class EmailSender {
 
 
-	private final String username = "rlaalswo6789@naver.com"; 
-    private final String password = "kimminjae5615!@"; 
+    private final String username = "@naver.com"; 
+    private final String password = ""; 
     
     private Properties getMailProperties() {
         Properties props = new Properties();
